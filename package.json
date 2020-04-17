@@ -1,0 +1,65 @@
+{
+  "name": "pollr",
+  "version": "1.0.0",
+  "engines": {
+    "node": "13.12.0",
+    "npm": "6.14.4"
+  },
+  "description": "Polling application built in Node",
+  "main": "./server/app.js",
+  "scripts": {
+    "build-login": "babel ./client/login ./client/helper --presets @babel/preset-react --out-file ./hosted/loginBundle.js",
+    "build-app": "babel ./client/app ./client/helper --presets @babel/preset-react --out-file ./hosted/bundle.js",
+    "build": "concurrently \"npm:build-*\"",
+    "watch-login": "babel --watch ./client/login ./client/helper --presets @babel/preset-react --out-file ./hosted/loginBundle.js --verbose",
+    "watch-app": "babel --watch ./client/app ./client/helper --presets @babel/preset-react --out-file ./hosted/bundle.js --verbose",
+    "watch-server": "nodemon --watch ./server --exec \"node ./server/app.js\"",
+    "watch": "concurrently -k \"npm:watch-*\"",
+    "start": "node ./server/app.js",
+    "pretest": "eslint ./server --fix",
+    "test": "echo \"Tests complete\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rimij405/igme430-pollr.git"
+  },
+  "keywords": [
+    "poll",
+    "Node",
+    "app",
+    "MVC"
+  ],
+  "author": "Ian Effendi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rimij405/igme430-pollr/issues"
+  },
+  "homepage": "https://github.com/rimij405/igme430-pollr#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "nodemon": "^2.0.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "concurrently": "^5.1.0",
+    "connect-redis": "^4.0.4",
+    "cookie-parser": "^1.4.5",
+    "csurf": "^1.11.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.3",
+    "express-session": "^1.17.1",
+    "helmet": "^3.22.0",
+    "mongoose": "^5.9.9",
+    "redis": "^3.0.2",
+    "serve-favicon": "^2.5.0",
+    "underscore": "^1.10.2"
+  }
+}
