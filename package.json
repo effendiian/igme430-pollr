@@ -8,13 +8,7 @@
   "description": "Polling application built in Node",
   "main": "./server/app.js",
   "scripts": {
-    "build-login": "babel ./client/login ./client/helper --presets @babel/preset-react --out-file ./hosted/loginBundle.js",
-    "build-app": "babel ./client/app ./client/helper --presets @babel/preset-react --out-file ./hosted/bundle.js",
-    "build": "concurrently \"npm:build-*\"",
-    "watch-login": "babel --watch ./client/login ./client/helper --presets @babel/preset-react --out-file ./hosted/loginBundle.js --verbose",
-    "watch-app": "babel --watch ./client/app ./client/helper --presets @babel/preset-react --out-file ./hosted/bundle.js --verbose",
-    "watch-server": "nodemon --watch ./server --exec \"node ./server/app.js\"",
-    "watch": "concurrently -k \"npm:watch-*\"",
+    "watch": "nodemon --watch ./server --exec \"node ./server/app.js\"",
     "start": "node ./server/app.js",
     "pretest": "eslint ./server --fix",
     "test": "echo \"Tests complete\""
