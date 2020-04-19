@@ -9,14 +9,13 @@ const express = require('express');
 const handlebars = require('express-handlebars');
 const session = require('express-session');
 const path = require('path');
-
-// Get
 const middleware = require('./middleware').configure;
 const router = require('./router').configure;
 
 //////////////////////////
 // CONFIGURATION
 //////////////////////////
+const app = express(); // Create the server.
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 const config = {
     handlebars: {
@@ -26,7 +25,6 @@ const config = {
         partialsDir: `${__dirname}/../server/views/partials/`,
     }
 };
-const app = express(); // Create the server.
 
 //////////////////////////
 // VIEW ENGINE

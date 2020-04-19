@@ -6,6 +6,10 @@ html {
     font-weight: 900;
 }
 
+a:focus {
+    outline: 2px dotted #c70039;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: mr-eaves-sans, sans-serif;
     font-size: 72px;
@@ -14,7 +18,11 @@ h1, h2, h3, h4, h5, h6 {
 
 body {
     background: #f2e2ba;
+    height: 100%;
+    width: 100%;
     margin: 0px;
+    display: flex;
+    flex-flow: column;
 }
 
 /* NAVBAR */
@@ -92,11 +100,6 @@ nav {
     text-decoration: underline;
     color: #900c3f;
     transition: color 1.3s;
-}
-
-/* MAIN CONTENT */
-.hero-image {
-    width: 50%;
 }
 
 /* FOOTER */

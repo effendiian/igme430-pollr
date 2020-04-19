@@ -1,0 +1,85 @@
+
+/* MAIN CONTENT */
+
+#content {
+    margin: 0px;
+    padding: 0px;
+    flex-grow: 1;
+
+    position: relative;
+}
+
+.content-main {
+    display: flex;
+    flex-flow: column;
+
+    height: 100%;
+    width: auto;
+}
+
+.hero-main {
+    height: 75%;
+    margin-left: 10%;
+    margin-right: 35%;
+    
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.content-background {
+    height: 100%;
+    width: auto;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-image: url(/assets/img/zombieing.svg);
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: contain;
+}
+
+.call-to-action {
+    text-decoration: none;
+    display: block;
+    font-family: azo-sans-web, sans-serif;
+    font-weight: 800;
+    font-size: 1em;
+    margin: 0px auto;
+    padding: 15px;
+    color: #c70039;
+    background: #f2e2ba;
+    border: 5px solid #c70039;
+    transition: padding 1.3s, color 1.3s, background 1.3s;
+}
+
+.call-to-action:hover,
+.call-to-action:focus,
+.call-to-action:active {
+    text-decoration: none;
+    cursor: pointer;
+    background: #c70039;
+    color: #f2e2ba;
+    padding: 10px;
+    transition: padding 1.3s, color 1.3s, background 1.3s;
+}
+
+.hero-caption {
+    padding: 15px;
+}
+
+/* BACKGROUND STYLING: https://css-tricks.com/multi-line-padded-text/ */
+.hero-caption-text {
+    color: #f2e2ba;
+    font-size: 2em;
+    line-height: 1.2;
+    padding: 5px;
+
+    background: #511845;
+    box-shadow: 15px 0 0 #511845, -15px 0 0 #511845;
+}

@@ -11,7 +11,10 @@
      <!-- FAVICON + STYLESHEETS -->
     <link rel="shortcut icon" href="/assets/img/favicon.png" />
     <link rel="stylesheet" href="https://use.typekit.net/jif8tkh.css">
-    <link rel="stylesheet" type="text/css" href="/assets/style.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+    {{#each css}}
+        <link rel="stylesheet" type="text/css" href="/assets/css/{{this}}.css" />
+    {{/each}}
 
     <!-- SITE-WIDE SCRIPTS -->
     <!-- nothing so far -->
