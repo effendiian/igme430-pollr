@@ -1,0 +1,199 @@
+/* Main CSS Stylesheet */
+
+html {
+    font-family: azo-sans-web, sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: mr-eaves-sans, sans-serif;
+    font-size: 72px;
+    font-weight: 800;
+}
+
+body {
+    background: #f2e2ba;
+    margin: 0px;
+}
+
+/* NAVBAR */
+
+nav {
+    height: auto;
+    width: 100%;
+}
+
+.navbar {
+    margin: 0px auto;
+    width: 80%;
+    min-height: 75px;
+    border-bottom: 5px solid #900c3f;
+    position: relative;
+}
+
+.navbar-left {
+    font-family: mr-eaves-sans, sans-serif;
+    font-size: 1.8em;
+    color: #511845;
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.navbar-right {
+    font-family: azo-sans-web, sans-serif;
+    font-weight: 400;
+    font-size: 0.9em;
+    color: #511845;
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.navbar-links {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.navbar-link {
+    margin: 10px;
+    padding: 0px;
+    display: inline;
+}
+
+.navbar-link a {
+    font-size: 0.7em;
+}
+
+#brand-logo,
+.navbar-link-style {
+    text-decoration: none;
+    color: #511845;
+    transition: color 1.3s;
+}
+
+#brand-logo:hover, 
+#brand-logo:focus,
+#brand-logo:active {
+    text-decoration: none;
+    color: #900c3f;
+    transition: color 1.3s;
+}
+
+.navbar-link-style:hover, 
+.navbar-link-style:focus,
+.navbar-link-style:active {
+    text-decoration: underline;
+    color: #900c3f;
+    transition: color 1.3s;
+}
+
+/* MAIN CONTENT */
+.hero-image {
+    width: 50%;
+}
+
+/* FOOTER */
+
+footer {
+    font-weight: 400;
+    font-size: 0.35em;
+    margin: 0px;
+    padding: 0px;
+    height: auto;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    background: #511845;
+    color: #f2e2ba;
+}
+
+.footer {
+    height: 25px;
+    padding: 5px;
+    position: relative;
+    top: 0px;
+}
+
+.footer-left {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.footer-right {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.footer-links {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.footer-link {
+    margin: 10px;
+    padding: 0px;
+    display: inline;
+}
+
+.footer-link a {
+    color: #f2e2ba;
+}
+
+.footer-link-style {
+    text-decoration: none;
+    transition: color 1.3s;
+}
+
+.footer-link-style:hover, 
+.footer-link-style:focus,
+.footer-link-style:active {
+    text-decoration: none;
+    color: #c70039;
+    transition: color 1.3s;
+}
+
+/*
+    Colors
+    ======
+    Dutch White: #f2e2ba
+    Russian Violet: #511845
+    Pink Raspberry: #900c3f
+    Vivid Crimson: #c70039
+    Portland Orange: #ff5733
+*/
+
+.dutch-white {
+    color: #f2e2ba;
+}
+
+.russian-violet {
+    color: #511845;
+}
+
+.pink-raspberry {
+    color: #900c3f;
+}
+
+.vivid-crimson {
+    color: #c70039;
+}
+
+.portland-orange {
+    color: #ff5733;
+}
+
+

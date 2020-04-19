@@ -27,11 +27,6 @@ const configure = (app) => {
     app.use(favicon(`${__dirname}/../../hosted/img/favicon.png`));
     app.disable('x-powered-by');
 
-    // Configure the handlebars engine.
-    app.engine('handlebars', handlebars({ defaultLayout: 'main' }));
-    app.set('view engine', 'handlebars');
-    app.set('views', `${__dirname}/../views`);
-
 };
 
 //////////////////////////

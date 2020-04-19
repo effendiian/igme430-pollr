@@ -19,7 +19,7 @@ const routes = {};
 const configure = (app) => {
 
     app.get('/', (req, res) => {
-        res.render('app', { title: "POLLR", layout: 'main' });
+        res.render('home', { layout: 'main' });
     });
 
 };
