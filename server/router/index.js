@@ -4,7 +4,7 @@
 // MODULE/LIBRARY IMPORT
 // ////////////////////////
 // const controllers = require('../controllers');
-// const middleware = require('../middleware');
+const middleware = require('./../middleware').middleware;
 
 // ////////////////////////
 // ROUTER OPTIONS
@@ -35,28 +35,28 @@ const routes = {
 // APP CONFIGURATION
 // ////////////////////////
 const configure = (app) => {
-  /* POST Methods */
 
+  /* POST Methods */
 
   /* GET Methods */
 
   // App.
 
   // Login/Signup page.
-  app.get('/login', routes.getLogin);
-  app.get('/signup', routes.getSignup);
+  app.get('/login', middleware.secure.requiresSecure, middleware.auth.requiresLogout, routes.getLogin);
+  app.get('/signup', middleware.secure.requiresSecure, middleware.auth.requiresLogout, routes.getSignup);
 
   // Pricing page.
-  app.get('/pricing', routes.getPricing);
+  app.get('/pricing', middleware.secure.requiresSecure, routes.getPricing);
 
   // About/Contact page.
-  app.get('/about', routes.getAbout);
-  app.get('/contact', routes.getContact);
+  app.get('/about', middleware.secure.requiresSecure, routes.getAbout);
+  app.get('/contact', middleware.secure.requiresSecure, routes.getContact);
 
   // Home page.
-  app.get('/home', routes.getIndex);
-  app.get('/index', routes.getIndex);
-  app.get('/', routes.getIndex);
+  app.get('/home', middleware.secure.requiresSecure, routes.getIndex);
+  app.get('/index', middleware.secure.requiresSecure, routes.getIndex);
+  app.get('/', middleware.secure.requiresSecure, routes.getIndex);
 };
 
 // ////////////////////////

@@ -53,6 +53,11 @@ const config = {
 };
 
 // ////////////////////////
+// MIDDLEWARE
+// ////////////////////////
+middleware(app);
+
+// ////////////////////////
 // DATABASE CONFIGURATION
 // ////////////////////////
 
@@ -69,11 +74,6 @@ mongoose.connect(
 app.engine('handlebars', handlebars(config.handlebars));
 app.set('view engine', 'handlebars');
 app.set('views', `${__dirname}/../server/views`);
-
-// ////////////////////////
-// MIDDLEWARE
-// ////////////////////////
-middleware(app);
 
 // ////////////////////////
 // ROUTER
