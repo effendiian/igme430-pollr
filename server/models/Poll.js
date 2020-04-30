@@ -3,7 +3,7 @@
 // ////////////////////////
 // MODULE/LIBRARY IMPORT
 // ////////////////////////
-const _ = require('underscore');
+const util = require('./../util');
 const mongoose = require('mongoose');
 
 // ////////////////////////
@@ -15,39 +15,41 @@ let PollModel = {};
 /* HELPER METHODS */
 
 const convertId = mongoose.Types.ObjectId;
-const setPrompt = (prompt) => _.escape(prompt).trim();
+const setTitle = (title) => util.sanitize(title).trim();
+const setPrompt = (prompt) => util.sanitize(prompt).trim();
 
 // ////////////////////////
 // USER SCHEMA
 // ////////////////////////
 
-/* DECLARATION */
-const PollSchema = new mongoose.Schema({
-  prompt: {
+const Schema = mongoose.Schema;
+const PollSchema = new Schema({
+
+  // eg. "Where should I get lunch today?"
+  title: {
     type: String,
     required: true,
     trim: true,
-    set: setPrompt,
+    set: setTitle,
   },
-  allowAnonymous: {
-    type: Boolean,
-    required: true,
-    default: true,
-  },
-  closedDate: {
-    type: Date,
-    default: undefined,
-  },
-  votes: [{
-    type: mongoose.Schema.ObjectId,
-    required: false,
-    ref: 'Vote',
-  }],
+
+  // Poll creator.
   owner: {
     type: mongoose.Schema.ObjectId,
     required: true,
     ref: 'User',
   },
+
+  // Voting options.
+  options: [{
+    body: String
+  }],
+
+  votes: [{
+    type: mongoose.Schema.ObjectId,
+    required: false,
+    ref: 'Vote',
+  }],
   createdDate: {
     type: Date,
     default: Date.now,
@@ -58,7 +60,7 @@ const PollSchema = new mongoose.Schema({
 
 // Get the Poll information as an object literal.
 PollSchema.statics.toAPI = (doc) => ({
-  prompt: doc.prompt,
+  title: doc.prompt,
   allowAnonymous: doc.allowAnonymous,
   closedDate: doc.closedDate,
   createdDate: doc.createdDate,
