@@ -6,34 +6,38 @@ const util = require('./../../util');
 const mongoose = require('mongoose');
 
 // ////////////////////////
-// POLL SCHEMA
+// MEMBER INIT
 // ////////////////////////
+mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
-const VoteSchema = new Schema({
 
-    // Voter (eg. Id of the User who voted).
-    voter: {
-        type: Schema.Types.ObjectId,
+// ////////////////////////
+// CHOICE SCHEMA
+// ////////////////////////
+
+const Schema = mongoose.Schema;
+const setBody = (body) => util.sanitize(body).trim();
+const ChoiceSchema = new Schema({
+
+    // Choice Option (eg. "Restaurant A").
+    body: {
+        type: String,
         required: true,
-        ref: 'User',
+        trim: true,
+        set: setBody,
     },
 
-    // Poll (eg. Id of the Poll this is referencing).
+    // Poll Parent (eg. _id of poll).
     poll: {
         type: Schema.Types.ObjectId,
         required: true,
         ref: 'Poll',
     },
 
-    choice: {
-        type: Schema.Types.ObjectId,
-        required: true,
-        ref: 'Choice'
-    },
-
+    // Created Date
     createdDate: {
         type: Date,
-        default: Date.now
+        default: Date.now,
     },
 
 });
@@ -41,4 +45,4 @@ const VoteSchema = new Schema({
 // ////////////////////////
 // MODULE EXPORTS
 // ////////////////////////
-module.exports.VoteSchema = VoteSchema;
+module.exports.ChoiceSchema = ChoiceSchema;

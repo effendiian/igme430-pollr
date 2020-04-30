@@ -11,37 +11,29 @@ const convertId = require('mongoose').Types.ObjectId; // For document _id conver
 // Map data for client API
 const toAPI = (doc) => ({
     _id: doc._id,
-    voter: doc.voter,
+    body: doc.body,
     poll: doc.poll,
-    choice: doc.choice,
 });
 
-// Find vote by Vote id.
-const findById = function(voteId, callback) {
+// Find choice by Choice Id.
+const findById = function(choiceId, callback) {
     return this.findOne({
-        _id: convertId(voteId),
+        _id: convertId(choiceId),
     }, callback);
 };
 
-// Find all votes associated with a specific User.
-const findByVoter = function(voterId, callback) {
-    return this.find({
-        voter: convertId(voterId)
-    }).populate('voter', 'username').select('_id voter poll choice').exec(callback);
-};
+// Find choice by Choice body.
+const findByBody = function(queryString, callback) {
+    return this.findOne({
+        body: queryString,
+    }, callback);
+}
 
-// Find all votes associated with a specific Poll.
+// Find all choices associated with a specific Poll.
 const findByPoll = function(pollId, callback) {
     return this.find({
         poll: convertId(pollId)
-    }).populate('poll', '_id title').select('_id voter poll choice').exec(callback);
-};
-
-// Find by choice.
-const findByChoice = function(choiceId, callback) {
-    return this.find({
-        choice: convertId(choiceId)
-    }).populate('choice', '_id body').select('_id voter poll choice').exec(callback);
+    }).populate('poll', '_id title').select('_id body poll').exec(callback);
 };
 
 // ////////////////////////
@@ -55,9 +47,8 @@ module.exports.assign = (schema) => {
     const fns = {
         toAPI,
         findById,
-        findByVoter,
+        findByBody,
         findByPoll,
-        findByChoice,
     };
 
     // Assign all fns (functions) listed above to the schema.

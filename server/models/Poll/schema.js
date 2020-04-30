@@ -30,7 +30,7 @@ const PollSchema = new Schema({
 
     // Poll Creator (eg. _id of author).
     owner: {
-        type: mongoose.Schema.ObjectId,
+        type: Schema.Types.ObjectId,
         required: true,
         ref: 'User',
     },
@@ -38,16 +38,14 @@ const PollSchema = new Schema({
     // Poll Options (eg. [ { _id: "...", body: "Restaurant A" }, ... ])
     // Search using poll.options.id()
     options: [{
-        body: { 
-            type: String,
-            trim: true,
-            set: setPrompt,
-        }
+        type: Schema.Types.ObjectId,
+        required: false,
+        ref: 'Choice'
     }],
 
     // Vote Results
     votes: [{
-        type: mongoose.Schema.ObjectId,
+        type: Schema.Types.ObjectId,
         required: false,
         ref: 'Vote'
     }],
