@@ -8,7 +8,7 @@
 
 const express = require('express');
 const config = require('./config');
-const database = require('./db.js');
+const database = require('./database');
 const middleware = require('./middleware');
 const router = require('./router');
 

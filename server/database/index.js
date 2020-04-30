@@ -2,17 +2,21 @@
 // MODULE/LIBRARY IMPORT
 // ////////////////////////
 
-const mongoose = require('mongoose');
+const mongodb = require('./mongodb.js');
+// const redisdb= require('./redisdb.js');
 
 // ////////////////////////
 // DATABASE OPTIONS
 // ////////////////////////
 
 // Pass in the appropriate options for MongoDB.
-const configure = ({ URL, options, onError, onConnect }) => {
+const configure = (app, config) => {
 
-    // Connect to the MongoDB database.
-    // mongoose.connect(URL, options, onError);
+    // Configure main database.
+    mongodb.configure(app, config.mongodb);
+
+    // Configure store.
+    // redisdb.configure(app, config.redisdb);
 
 };
 

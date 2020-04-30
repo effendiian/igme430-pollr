@@ -16,9 +16,13 @@ module.exports = {
     // For handling errors on initial connection.
     onError: (err) => {
         if(err) {
-        console.error(util.ERRORS.MONGODB.CONNECTION);
-        throw err;
+            console.error(util.ERRORS.MONGODB.CONNECTION);
+            throw err;
         }
-    }
+    },
+
+    onConnect: () => {
+        console.log("Connected successfully to MongoDB.");
+    },
 
 }

@@ -35,7 +35,7 @@ const routes = {
 // ////////////////////////
 // APP CONFIGURATION
 // ////////////////////////
-const configure = (app) => {
+const configure = (app, config) => {
 
   /* POST Methods */
 
