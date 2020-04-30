@@ -9,9 +9,8 @@ const path = require('path');
 // ////////////////////////
 
 module.exports = {
-    extname: 'handlebars',
-    defaultLayout: 'main',
-    layoutsDir: path.resolve(`${__dirname}/../views/layouts/`),
-    partialsDir: path.resolve(`${__dirname}/../views/partials/`),
+  extname: 'handlebars',
+  defaultLayout: 'main',
+  layoutsDir: path.resolve(`${__dirname}/../views/layouts/`),
+  partialsDir: path.resolve(`${__dirname}/../views/partials/`),
 };
- 

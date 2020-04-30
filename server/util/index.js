@@ -4,6 +4,6 @@
 // MODULE EXPORTS
 // ////////////////////////
 module.exports = {
-    ERRORS: require('./error.js').ERRORS,
-    sanitize: require('./sanitize.js').sanitize,
+  ERRORS: require('./error.js').ERRORS,
+  sanitize: require('./sanitize.js').sanitize,
 };

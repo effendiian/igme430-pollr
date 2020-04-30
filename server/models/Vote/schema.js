@@ -2,39 +2,39 @@
 // MODULE/LIBRARY IMPORT
 // ////////////////////////
 
-const util = require('./../../util');
 const mongoose = require('mongoose');
+const util = require('../../util');
 
 // ////////////////////////
 // POLL SCHEMA
 // ////////////////////////
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 const VoteSchema = new Schema({
 
-    // Voter (eg. Id of the User who voted).
-    voter: {
-        type: Schema.Types.ObjectId,
-        required: true,
-        ref: 'User',
-    },
+  // Voter (eg. Id of the User who voted).
+  voter: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'User',
+  },
 
-    // Poll (eg. Id of the Poll this is referencing).
-    poll: {
-        type: Schema.Types.ObjectId,
-        required: true,
-        ref: 'Poll',
-    },
+  // Poll (eg. Id of the Poll this is referencing).
+  poll: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'Poll',
+  },
 
-    choice: {
-        type: Schema.Types.ObjectId,
-        required: true,
-        ref: 'Choice'
-    },
+  choice: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'Choice',
+  },
 
-    createdDate: {
-        type: Date,
-        default: Date.now
-    },
+  createdDate: {
+    type: Date,
+    default: Date.now,
+  },
 
 });
 

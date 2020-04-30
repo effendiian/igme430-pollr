@@ -6,9 +6,9 @@
 // Exports all schema/models for the application.
 module.exports = {
 
-    User: require('./User'),
-    Poll: require('./Poll'),
-    Vote: require('./Vote'),
-    Choice: require('./Choice'),
+  User: require('./User'),
+  Poll: require('./Poll'),
+  Vote: require('./Vote'),
+  Choice: require('./Choice'),
 
 };

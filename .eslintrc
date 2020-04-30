@@ -1,7 +1,10 @@
 {
     "extends": "airbnb/base",
     "rules": {
-        "no-underscore-dangle": "off",
-        "no-plusplus": "off"
+        "comma-dangle": [ "error", "only-multiline"],
+        "no-console": [ "error", { "allow": [ "warn", "error", "log" ] } ],
+        "no-param-reassign": [ "error", { "props": true, "ignorePropertyModificationsFor": ["schema"] } ],
+        "func-names": [ "error", "as-needed" ],
+        "no-underscore-dangle": "off"
     }
 }

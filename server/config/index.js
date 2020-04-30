@@ -3,7 +3,7 @@
 // ////////////////////////
 
 // Get the PORT number.
-const port = require('./port.js');  
+const port = require('./port.js');
 
 // Get the middleware settings.
 const middleware = require('./middleware.js');
@@ -18,8 +18,8 @@ const mongodb = require('./mongodb.js');
 // MODULE EXPORTS
 // ////////////////////////
 module.exports = {
-    port,
-    middleware,
-    handlebars,
-    mongodb
+  port,
+  middleware,
+  handlebars,
+  mongodb,
 };

@@ -13,6 +13,7 @@ const UserSchema = require('./schema.js');
 
 // Prepare and assign static methods.
 const statics = require('./statics.js');
+
 statics.assign(UserSchema);
 
 // ////////////////////////
@@ -24,6 +25,6 @@ UserModel = mongoose.model('User', UserSchema);
 // MODULE EXPORTS
 // ////////////////////////
 module.exports = {
-    UserModel,
-    UserSchema
+  UserModel,
+  UserSchema,
 };

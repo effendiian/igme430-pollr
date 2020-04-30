@@ -9,10 +9,9 @@ const path = require('path');
 // ////////////////////////
 
 module.exports = {
-    path: {
-        assets: path.resolve(`${__dirname}/../../hosted/`), 
-        favicon: path.resolve(`${__dirname}/../../hosted/img/favicon.png`),
-        views: path.resolve(`${__dirname}/../views`)
-    },
+  path: {
+    assets: path.resolve(`${__dirname}/../../hosted/`),
+    favicon: path.resolve(`${__dirname}/../../hosted/img/favicon.png`),
+    views: path.resolve(`${__dirname}/../views`),
+  },
 };
- 

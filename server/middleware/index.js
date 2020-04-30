@@ -17,14 +17,13 @@ const bodyParser = require('body-parser');
 // ////////////////////////
 const middleware = {
   auth: require('./auth.js'),
-  secure: require('./secure.js')
+  secure: require('./secure.js'),
 };
 
 // ////////////////////////
 // APP CONFIGURATION
 // ////////////////////////
 const configure = (app, config) => {
-
   // Serve static assets from the '/assets'
   app.use('/assets', express.static(config.middleware.path.assets));
 
@@ -38,12 +37,11 @@ const configure = (app, config) => {
   app.use(compression());
   app.use(bodyParser.urlencoded({ extended: true }));
   // app.use(cookieParser());
-  
-  // VIEW ENGINE  
+
+  // VIEW ENGINE
   app.engine('handlebars', handlebars(config.handlebars));
   app.set('view engine', 'handlebars');
   app.set('views', config.middleware.path.views);
-
 };
 
 // ////////////////////////

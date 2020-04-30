@@ -5,7 +5,7 @@
 // ////////////////////////
 
 // const controllers = require('../controllers');
-const middleware = require('./../middleware').middleware;
+const { middleware } = require('../middleware');
 
 // ////////////////////////
 // ROUTER OPTIONS
@@ -36,7 +36,6 @@ const routes = {
 // APP CONFIGURATION
 // ////////////////////////
 const configure = (app, config) => {
-
   /* POST Methods */
 
   /* GET Methods */

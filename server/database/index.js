@@ -11,13 +11,11 @@ const mongodb = require('./mongodb.js');
 
 // Pass in the appropriate options for MongoDB.
 const configure = (app, config) => {
+  // Configure main database.
+  mongodb.configure(app, config.mongodb);
 
-    // Configure main database.
-    mongodb.configure(app, config.mongodb);
-
-    // Configure store.
-    // redisdb.configure(app, config.redisdb);
-
+  // Configure store.
+  // redisdb.configure(app, config.redisdb);
 };
 
 
@@ -26,5 +24,5 @@ const configure = (app, config) => {
 // ////////////////////////
 
 module.exports = {
-    configure,
-}
+  configure,
+};

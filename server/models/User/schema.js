@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 // MEMBER INIT
 // ////////////////////////
 mongoose.Promise = global.Promise;
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
 // ////////////////////////
 // USER SCHEMA

@@ -13,6 +13,7 @@ const ChoiceSchema = require('./schema.js');
 
 // Prepare and assign static methods.
 const statics = require('./statics.js');
+
 statics.assign(ChoiceSchema);
 
 // ////////////////////////
@@ -25,6 +26,6 @@ ChoiceModel = mongoose.model('Choice', ChoiceSchema);
 // MODULE EXPORTS
 // ////////////////////////
 module.exports = {
-    ChoiceModel,
-    ChoiceSchema
+  ChoiceModel,
+  ChoiceSchema,
 };
