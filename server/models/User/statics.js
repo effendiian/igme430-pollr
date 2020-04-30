@@ -95,7 +95,7 @@ const authenticate = function (actualUsername, actualPassword, callback) {
 // ////////////////////////
 
 // Assign statics to schema.
-module.exports.assign = (schema) => {
+module.exports.assign = function (schema) {
 
     // Object containing static functions to assign to the schema.
     const fns = {
@@ -107,7 +107,7 @@ module.exports.assign = (schema) => {
     };
 
     // Assign all fns (functions) listed above to the schema.
-    Objects.keys(fns).forEach((fnKey) => {
+    Object.keys(fns).forEach((fnKey) => {
         schema.statics[fnKey] = fns[fnKey];
     });
 

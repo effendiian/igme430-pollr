@@ -9,6 +9,7 @@ module.exports = {
 
     // Mongoose options.
     options: {
+        useCreateIndex: true,
         useNewUrlParser: true,
         useUnifiedTopology: true,
     },

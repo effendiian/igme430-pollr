@@ -4,6 +4,7 @@
 
 // Connection library.
 const mongoose = require('mongoose');
+const models = require('./../models');
 
 // ////////////////////////
 // MONGODB OPTIONS

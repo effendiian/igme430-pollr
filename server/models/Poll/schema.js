@@ -8,8 +8,8 @@ const mongoose = require('mongoose');
 // ////////////////////////
 // MEMBER INIT
 // ////////////////////////
+
 mongoose.Promise = global.Promise;
-const Schema = mongoose.Schema;
 
 // ////////////////////////
 // POLL SCHEMA
@@ -61,4 +61,4 @@ const PollSchema = new Schema({
 // ////////////////////////
 // MODULE EXPORTS
 // ////////////////////////
-module.exports.PollSchema = PollSchema;
+module.exports = PollSchema;

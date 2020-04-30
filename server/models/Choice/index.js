@@ -18,7 +18,8 @@ statics.assign(ChoiceSchema);
 // ////////////////////////
 // CHOICE MODEL
 // ////////////////////////
-ChoiceSchema = mongoose.model('Choice', choiceSchema);
+
+ChoiceModel = mongoose.model('Choice', ChoiceSchema);
 
 // ////////////////////////
 // MODULE EXPORTS

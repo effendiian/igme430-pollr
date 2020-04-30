@@ -33,7 +33,7 @@ module.exports.assign = (schema) => {
     };
 
     // Assign all fns (functions) listed above to the schema.
-    Objects.keys(fns).forEach((fnKey) => {
+    Object.keys(fns).forEach((fnKey) => {
         schema.methods[fnKey] = fns[fnKey];
     });
 

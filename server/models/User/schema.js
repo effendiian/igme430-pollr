@@ -38,4 +38,4 @@ const UserSchema = new Schema({
 // ////////////////////////
 // MODULE EXPORTS
 // ////////////////////////
-module.exports.UserSchema = UserSchema;
+module.exports = UserSchema;

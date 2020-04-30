@@ -41,4 +41,4 @@ const VoteSchema = new Schema({
 // ////////////////////////
 // MODULE EXPORTS
 // ////////////////////////
-module.exports.VoteSchema = VoteSchema;
+module.exports = VoteSchema;

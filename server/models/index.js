@@ -9,5 +9,6 @@ module.exports = {
     User: require('./User'),
     Poll: require('./Poll'),
     Vote: require('./Vote'),
+    Choice: require('./Choice'),
 
 };

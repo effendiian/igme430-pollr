@@ -22,7 +22,7 @@ methods.assign(VoteSchema);
 // ////////////////////////
 // POLL MODEL
 // ////////////////////////
-VoteModel = mongoose.model('Vote', voteSchema);
+VoteModel = mongoose.model('Vote', VoteSchema);
 
 // ////////////////////////
 // MODULE EXPORTS
