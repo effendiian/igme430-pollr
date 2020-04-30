@@ -1,10 +1,17 @@
 // ////////////////////////
+// MODULE IMPORTS
+// ////////////////////////
+
+const path = require('path');
+
+// ////////////////////////
 // MODULE EXPORTS
 // ////////////////////////
 
 module.exports = {
     extname: 'handlebars',
     defaultLayout: 'main',
-    layoutsDir: `${__dirname}/../server/views/layouts/`,
-    partialsDir: `${__dirname}/../server/views/partials/`,
+    layoutsDir: path.resolve(`${__dirname}/../views/layouts/`),
+    partialsDir: path.resolve(`${__dirname}/../views/partials/`),
 };
+ 

@@ -5,7 +5,6 @@
 // ////////////////////////
 const express = require('express');
 const handlebars = require('express-handlebars');
-const path = require('path');
 // const csrf = require('csurf');
 const favicon = require('serve-favicon');
 const compression = require('compression');
@@ -27,10 +26,10 @@ const middleware = {
 const configure = (app, config) => {
 
   // Serve static assets from the '/assets'
-  app.use('/assets', express.static(path.resolve(`${__dirname}/../../hosted/`)));
+  app.use('/assets', express.static(config.middleware.path.assets));
 
   // SERVE FAVICON
-  app.use(favicon(`${__dirname}/../../hosted/img/favicon.png`));
+  app.use(favicon(config.middleware.path.favicon));
 
   // DISABLE HEADER FOR SECURITY
   app.disable('x-powered-by');
@@ -43,7 +42,7 @@ const configure = (app, config) => {
   // VIEW ENGINE  
   app.engine('handlebars', handlebars(config.handlebars));
   app.set('view engine', 'handlebars');
-  app.set('views', `${__dirname}/../server/views`);
+  app.set('views', config.middleware.path.views);
 
 };
 
