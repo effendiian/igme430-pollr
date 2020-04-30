@@ -1,4 +1,10 @@
 // ////////////////////////
+// MODULE/LIBRARY IMPORT
+// ////////////////////////
+
+const mongoose = require('mongoose');
+
+// ////////////////////////
 // POLL SCHEMA
 // ////////////////////////
 
@@ -16,7 +22,7 @@ methods.assign(PollSchema);
 // ////////////////////////
 // POLL MODEL
 // ////////////////////////
-PollModel = mongoose.module('Poll', pollSchema);
+PollModel = mongoose.model('Poll', pollSchema);
 
 // ////////////////////////
 // MODULE EXPORTS

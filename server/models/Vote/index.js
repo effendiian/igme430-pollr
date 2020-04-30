@@ -5,25 +5,29 @@
 const mongoose = require('mongoose');
 
 // ////////////////////////
-// USER SCHEMA
+// VOTE SCHEMA
 // ////////////////////////
 
-// Prepare UserSchema.
-const UserSchema = require('./schema.js');
+// Prepare the VoteSchema.
+const VoteSchema = require('./schema.js');
 
 // Prepare and assign static methods.
 const statics = require('./statics.js');
-statics.assign(UserSchema);
+statics.assign(VoteSchema);
+
+// Prepare and assign instance methods.
+const methods = require('./methods.js');
+methods.assign(VoteSchema);
 
 // ////////////////////////
-// USER MODEL
+// POLL MODEL
 // ////////////////////////
-UserModel = mongoose.model('User', UserSchema);
+VoteModel = mongoose.model('Vote', voteSchema);
 
 // ////////////////////////
 // MODULE EXPORTS
 // ////////////////////////
 module.exports = {
-    UserModel,
-    UserSchema
+    VoteModel,
+    VoteSchema
 };

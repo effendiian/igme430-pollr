@@ -28,7 +28,7 @@ const findById = function(id, callback) {
 const findByOwner = function(ownerId, callback) {
     return this.find({
         ownerId: convertId(ownerId)
-    }).select('_id title owner prompts createdDate').exec(callback);
+    }).select('_id title owner options createdDate').exec(callback);
 };
 
 // ////////////////////////
