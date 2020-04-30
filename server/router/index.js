@@ -3,6 +3,7 @@
 // ////////////////////////
 // MODULE/LIBRARY IMPORT
 // ////////////////////////
+
 // const controllers = require('../controllers');
 const middleware = require('./../middleware').middleware;
 
@@ -60,7 +61,7 @@ const configure = (app) => {
 };
 
 // ////////////////////////
-// EXPORT
+// MODULE EXPORTS
 // ////////////////////////
 module.exports = {
   configure,
