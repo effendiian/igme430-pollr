@@ -17,6 +17,7 @@ mongoose.Promise = global.Promise;
 
 const { Schema } = mongoose;
 const setTitle = (title) => util.sanitize(title).trim();
+const setDescription = (desc) => util.sanitize(desc).trim();
 const PollSchema = new Schema({
 
   // Poll Prompt (eg. "Where should I get lunch today?").
@@ -25,6 +26,14 @@ const PollSchema = new Schema({
     required: true,
     trim: true,
     set: setTitle,
+  },
+
+  // Poll Description (eg. "I'm giving you additional information...").
+  description: {
+    type: String,
+    required: false,
+    trim: true,
+    set: setDescription,
   },
 
   // Poll Creator (eg. _id of author).

@@ -1,0 +1,21 @@
+{
+    "env": {
+        "mocha": true,
+    },
+    "extends": [
+        "plugin:mocha/recommended",
+        "airbnb/base"
+    ],
+    "plugins": [
+        "mocha"
+    ],
+    "rules": {
+        "mocha/no-top-level-hooks": 0,
+        "mocha/no-hooks-for-single-case": 0,
+        "mocha/no-mocha-arrows": 0,
+        "comma-dangle": [ "error", "only-multiline"],
+        "indent": [ "error", 2, { "VariableDeclarator": 2 } ], 
+        "func-names": [ "error", "as-needed" ],
+        "no-underscore-dangle": [ "warn", { "allow": [ "_id" ] } ],
+    }
+}

@@ -23,27 +23,20 @@ const mongodb = {
 // ////////////////////////
 
 // Connect to the MongoDB and then drop the collection.
-before("refresh db connection", async () => {
-
-  try {
-    await mongoose.connect(mongodb.URL, mongodb.options);
-    const conn = mongoose.connection;
-    conn.on('error', (err) => {
-      console.warn(`Connection Error: ${err}`);
-    });
-    conn.once('open', () => {
-    });
-  }
-  catch(e) {
-    throw e;
-  }
-
+before('refresh db connection', async () => { // eslint-disable-line no-undef
+  await mongoose.connect(mongodb.URL, mongodb.options);
+  const conn = mongoose.connection;
+  conn.on('error', (err) => {
+    console.warn(`Connection Error: ${err}`);
+  });
+  conn.once('open', () => {
+  });
 });
 
 // Disconnect from the mongoose database.
-after("disconnect from db", (done) => {
+after('disconnect from db', (done) => { // eslint-disable-line no-undef
   mongoose.disconnect((err) => {
-    if(err) { throw err; }
+    if (err) { throw err; }
     done();
   });
 });

@@ -1,10 +1,14 @@
 package: ./package.json
 reporter: spec
-extension:
-  - js
-spec: test/**/*.test.js
 timeout: 5000
 ui: bdd
 color: true
 diff: true
 inline-diffs: true
+extension:
+  - js
+spec: test/**/*.test.js
+file:
+  - test/setup.test.js
+  - test/usermodel.test.js
+  - test/pollmodel.test.js
