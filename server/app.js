@@ -8,7 +8,6 @@
 
 const express = require('express');
 const config = require('./config');
-const database = require('./database');
 const middleware = require('./middleware');
 const router = require('./router');
 
@@ -18,11 +17,11 @@ const router = require('./router');
 
 const app = express(); // Create the server.
 
-// ////////////////////////
-// DATABASE CONFIGURATION
-// ////////////////////////
-
-database.configure(app, config);
+// If in development, add 'env.debug = true' to the app.
+if (process.env.NODE_ENV !== 'production') {
+  console.log(`Not running in Development mode. (NODE_ENV=${process.env.NODE_ENV}).`);
+  app.debug = true;
+}
 
 // ////////////////////////
 // MIDDLEWARE CONFIGURATION

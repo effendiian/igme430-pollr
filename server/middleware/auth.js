@@ -22,6 +22,18 @@ const requiresLogout = (req, res, next) => {
   return next();
 };
 
+// Requires CSRF Token.
+const requiresCSRFToken = (err, req, res, next) => {
+  // Check if CSRF token has been included.
+  if(err.code !== 'EBADCSRFTOKEN') {
+    return next(err);
+  }
+
+  // Missing the token.
+  console.error('Missing CSRF token.');
+  return false;
+};
+
 // ////////////////////////
 // MODULE EXPORTS
 // ////////////////////////
@@ -29,4 +41,5 @@ const requiresLogout = (req, res, next) => {
 module.exports = {
   requiresLogin,
   requiresLogout,
+  requiresCSRFToken,
 };

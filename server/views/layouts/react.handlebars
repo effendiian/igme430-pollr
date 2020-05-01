@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <!-- META -->
+    <meta charset="utf-8" />
+    <meta name="description" content="Make polls. Make decisions." />
+    <meta name="keywords" content="Polls" />
+    <meta name="author" content="Ian Effendi" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+
+     <!-- FAVICON + STYLESHEETS -->
+    <link rel="shortcut icon" href="/assets/img/favicon.png" />
+    <link rel="stylesheet" href="https://use.typekit.net/jif8tkh.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+    {{#each css}}
+        <link rel="stylesheet" type="text/css" href="/assets/css/{{this}}.css" />
+    {{/each}}
+
+    <!-- SITE-WIDE SCRIPTS -->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
+    <script src="/assets/js/main.bundle.js"></script>
+    <script src="/assets/js/util.bundle.js"></script>
+</head>
+<body>
+    {{{body}}}
+</body>
+</html>

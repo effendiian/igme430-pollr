@@ -24,11 +24,6 @@ const configure = (app, {
   db.once('open', () => {
     // Execute the connection callback.
     onConnect();
-
-    // If in development, add elements to the Database.
-    if (process.env.NODE_ENV !== 'production') {
-      console.log(`Not running in Development mode. (NODE_ENV=${process.env.NODE_ENV}).`);
-    }
   });
 };
 

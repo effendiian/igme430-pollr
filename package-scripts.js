@@ -16,6 +16,17 @@ module.exports = {
       description: "Entry point for the application.",
     },
 
+    build: {
+      production: {
+        script: `webpack --color --config ./.webpack/webpack.prod.js`,
+        description: "Server client files to the hosted folder (Production)."
+      },
+      development: {
+        script: `webpack --color --config ./.webpack/webpack.dev.js`,
+        description: "Server client files to the hosted folder (Development)."
+      },
+    },
+
     lint: {
       default: {
         script: "nps lint.client && nps lint.server && nps lint.test",
@@ -84,6 +95,10 @@ module.exports = {
       nodemon: {
         script: `nodemon --watch ./server --exec \"node ./server/app.js\"`,
         description: "Use nodemon to start a dev server that restarts when files need to be changed."
+      },
+      client: {
+        script: `webpack-dev-server --open --color --config ./.webpack/webpack.dev.js`,
+        description: "Server client files to the hosted folder."
       }
     }
 

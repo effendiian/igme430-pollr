@@ -41,6 +41,9 @@ const configure = (app) => {
   /* GET Methods */
 
   // App.
+  app.get('/dashboard', middleware.secure.requiresSecure, (req, res) => {
+    res.render('app', { layout: 'react' });
+  });
 
   // Login/Signup page.
   app.get('/login', middleware.secure.requiresSecure, middleware.auth.requiresLogout, routes.getLogin);

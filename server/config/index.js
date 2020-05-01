@@ -14,6 +14,9 @@ const handlebars = require('./handlebars.js');
 // MongoDB configuration settings.
 const mongodb = require('./mongodb.js');
 
+// RedisDB configuration settings.
+const redisdb = require('./redisdb.js');
+
 // ////////////////////////
 // MODULE EXPORTS
 // ////////////////////////
@@ -22,4 +25,5 @@ module.exports = {
   middleware,
   handlebars,
   mongodb,
+  redisdb,
 };
