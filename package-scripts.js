@@ -97,7 +97,7 @@ module.exports = {
         description: "Use nodemon to start a dev server that restarts when files need to be changed."
       },
       client: {
-        script: `webpack-dev-server --open --color --config ./.webpack/webpack.dev.js`,
+        script: `nodemon --watch ./server --watch ./client --exec \"nps build.development && node ./server/app.js\"`,
         description: "Server client files to the hosted folder."
       }
     }

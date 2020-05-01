@@ -1,1 +1,19 @@
-// Utility module.
+// ////////////////////////
+// MODULE/LIBRARY IMPORT
+// ////////////////////////
+
+// ////////////////////////
+// MEMBER INIT
+// ////////////////////////
+
+// Debug statement.
+const isLoaded = (scriptName) => {
+  console.log(`Utilities loaded from the '${scriptName}' script.`);
+};
+
+// ////////////////////////
+// EXPORT
+// ////////////////////////
+export default {
+  isLoaded
+};

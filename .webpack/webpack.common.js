@@ -11,24 +11,15 @@ const path = require('path');
 module.exports = {
 
   externals: {
-    react: {
-      root: 'React',
-      commonjs2: 'react',
-      commonjs: 'react',
-      amd: 'react',
-      umd: 'react',
-    },
-    'react-dom': {
-      root: 'ReactDOM',
-      commonjs2: 'react-dom',
-      commonjs: 'react-dom',
-      amd: 'react-dom',
-      umd: 'react-dom',
-    },
+    "react": "React",
+    "react-dom": "ReactDOM",
   },
   entry: {
-    main: './client/src/index.js',
     util: './client/util/index.js',
+    authentication: './client/views/authentication.js',
+    feed: './client/views/feed.js',
+    poll: './client/views/poll.js',
+    profile: './client/views/profile.js',
   },
   output: {
       path: path.resolve(`${__dirname}/../hosted/js`)

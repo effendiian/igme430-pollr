@@ -42,7 +42,10 @@ const configure = (app) => {
 
   // App.
   app.get('/dashboard', middleware.secure.requiresSecure, (req, res) => {
-    res.render('app', { layout: 'react' });
+    res.render('app', { 
+      title: 'Dashboard',
+      layout: 'react', 
+      scripts: [ 'authentication' ] });
   });
 
   // Login/Signup page.
