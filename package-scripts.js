@@ -53,7 +53,7 @@ module.exports = {
 
     test: {
       default: {
-        script: "nps lint.server.fix && mocha",
+        script: `nps lint.server.fix && nodemon --exec \"mocha --config ./.mocharc.yml\"`,
         description: "Use mocha to test the application."
       },
       watch: {
@@ -63,8 +63,14 @@ module.exports = {
     },
 
     serve: {
-      script: "nodemon --watch ./server --exec 'node ./server/app.js'",
-      description: "Use nodemon to start a dev server that restarts when files need to be changed."
+      default: {
+        script: npsUtils.concurrent.nps('serve.nodemon', 'lint.server.watch'),
+        description: "Lint and serve with nodemon.",
+      },
+      nodemon: {
+        script: `nodemon --watch ./server --exec \"node ./server/app.js\"`,
+        description: "Use nodemon to start a dev server that restarts when files need to be changed."
+      }
     }
 
   }

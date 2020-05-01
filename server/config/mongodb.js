@@ -11,7 +11,7 @@ const util = require('../util');
 module.exports = {
 
   // Database connection URI.
-  URL: process.env.MONGODB_URI || 'mongodb://localhost/Pollr',
+  URL: process.env.MONGODB_URI || 'mongodb://localhost/pollr',
 
   // Mongoose options.
   options: {

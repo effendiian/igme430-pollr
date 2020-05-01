@@ -59,7 +59,7 @@ const findByUsername = function (name, callback) {
 // Callback receives (err, salt, hash).
 const generateSalt = (password, callback) => {
   const salt = crypto.randomBytes(saltLength);
-  calculateHash(password, salt, callback);
+  return calculateHash(password, salt, callback);
 };
 
 // Authenticate the user login.
