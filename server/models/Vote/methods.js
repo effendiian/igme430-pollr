@@ -28,7 +28,7 @@ const findSimilarVotes = function (callback) {
 module.exports.assign = (schema) => {
   // Object containing static functions to assign to the schema.
   const fns = {
-
+    findSimilarVotes
   };
 
   // Assign all fns (functions) listed above to the schema.

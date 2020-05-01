@@ -24,7 +24,7 @@ methods.assign(PollSchema);
 // ////////////////////////
 // POLL MODEL
 // ////////////////////////
-PollModel = mongoose.model('Poll', PollSchema);
+const PollModel = mongoose.model('Poll', PollSchema);
 
 // ////////////////////////
 // MODULE EXPORTS

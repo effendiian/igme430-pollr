@@ -21,22 +21,43 @@ module.exports = {
         script: "eslint ./server",
         description: "Lint the server files."
       },
-      fix: {
-        script: "eslint ./server --fix",
-        description: "Lint the server files and fix them."
+      client: {
+        default: {
+          script: "eslint ./client",
+          description: "Lint client-side folder and subdirectories.",
+        },
+        fix: {
+          script: "eslint ./client --fix",
+          description: "Lint and fix client-side folder and subdirectories."
+        },
+        watch: {
+          script: "esw ./client -w --color --fix",
+          description: "Watch client files for changes and lint automatically."
+        }
       },
-      watch: {
-        script: "esw "
-      }
+      server: {
+        default: {
+          script: "nps lint",
+          description: "Lint the server files."
+        },
+        fix: {
+          script: "eslint ./server --fix",
+          description: "Lint the server files and fix them."
+        },
+        watch: {
+          script: "esw ./server -w --color --fix",
+          description: "Watch client files for changes and lint automatically."
+        },
+      },
     },
 
     test: {
       default: {
-        script: "nps lint.fix && mocha",
+        script: "nps lint.server.fix && mocha",
         description: "Use mocha to test the application."
       },
       watch: {
-        script: "nps lint.fix && mocha --watch ./tests ./",
+        script: npsUtils.concurrent.nps('lint.server.watch', 'lint.server.fix && mocha --watch ./tests ./'),
         description: "Watch application directory using the watch command."
       }
     },

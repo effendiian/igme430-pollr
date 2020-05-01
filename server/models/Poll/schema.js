@@ -17,7 +17,6 @@ mongoose.Promise = global.Promise;
 
 const { Schema } = mongoose;
 const setTitle = (title) => util.sanitize(title).trim();
-const setPrompt = (prompt) => util.sanitize(prompt).trim();
 const PollSchema = new Schema({
 
   // Poll Prompt (eg. "Where should I get lunch today?").

@@ -11,23 +11,38 @@ const models = require('../models');
 // ////////////////////////
 
 // Debug settings run when not in production.
-const debug = (app) => {
+const debug = () => {
   // //////////////
   // Test: User Model Password Generation.
 
   // Test User data.
-  const TestUserData = {
+  const testUserData = {
     username: 'test',
     rawPassword: 'password',
   };
 
-
   // Test user.
   const TestUser = new models.User.UserModel({
-    username: 'test1',
+    username: testUserData.username,
   });
 
-  console.dir(TestUser);
+  TestUser.generateSalt(testUserData.rawPassword, (err1, salt, hash) => {
+    if (!err1) {
+      TestUser.salt = salt;
+      TestUser.password = hash;
+
+      // Test authentication.
+      TestUser.authenticate(testUserData.username, testUserData.rawPassword, (err2, isValid) => {
+        if (!err2) {
+          if (isValid) {
+            console.log('Authentication test passed.');
+          }
+        }
+      });
+    }
+  });
+
+  console.log(`TestUser: ${TestUser.username}, Password Hash: ${TestUser.password}, Salt: ${TestUser.salt}`);
 };
 
 // Configure the MongoDB with mongoose.

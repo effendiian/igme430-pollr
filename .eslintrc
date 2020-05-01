@@ -5,6 +5,7 @@
         "no-console": [ "error", { "allow": [ "warn", "error", "log" ] } ],
         "no-param-reassign": [ "error", { "props": true, "ignorePropertyModificationsFor": ["schema"] } ],
         "func-names": [ "error", "as-needed" ],
-        "no-underscore-dangle": "off"
+        "no-underscore-dangle": "off",
+        "indent": [ "error", 2, { "VariableDeclarator": 2 } ]
     }
 }

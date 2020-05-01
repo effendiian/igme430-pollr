@@ -77,7 +77,7 @@ const authenticate = function (actualUsername, actualPassword, callback) {
 
     // Validate the user password.
     return validate(user, actualPassword, (isValidPassword) => {
-      if (isValid === true) {
+      if (isValidPassword === true) {
         // Return the user.
         return callback(null, user);
       }
@@ -92,7 +92,7 @@ const authenticate = function (actualUsername, actualPassword, callback) {
 // ////////////////////////
 
 // Assign statics to schema.
-module.exports.assign = function (schema) {
+module.exports.assign = (schema) => {
   // Object containing static functions to assign to the schema.
   const fns = {
     toAPI,

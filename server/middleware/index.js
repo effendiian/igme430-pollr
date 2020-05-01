@@ -15,10 +15,9 @@ const bodyParser = require('body-parser');
 // ////////////////////////
 // MIDDLEWARE OPTIONS
 // ////////////////////////
-const middleware = {
-  auth: require('./auth.js'),
-  secure: require('./secure.js'),
-};
+
+const auth = require('./auth.js');
+const secure = require('./secure.js');
 
 // ////////////////////////
 // APP CONFIGURATION
@@ -48,6 +47,9 @@ const configure = (app, config) => {
 // EXPORT
 // ////////////////////////
 module.exports = {
-  middleware,
+  middleware: {
+    auth,
+    secure
+  },
   configure,
 };

@@ -1,9 +1,14 @@
-// Wrapper for utility functions that can be used by other modules.
+// ////////////////////////
+// UTILITY IMPORT
+// ////////////////////////
+
+const { ERRORS } = require('./error.js');
+const { sanitize } = require('./sanitize.js');
 
 // ////////////////////////
 // MODULE EXPORTS
 // ////////////////////////
 module.exports = {
-  ERRORS: require('./error.js').ERRORS,
-  sanitize: require('./sanitize.js').sanitize,
+  ERRORS,
+  sanitize
 };

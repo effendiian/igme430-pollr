@@ -24,7 +24,7 @@ methods.assign(VoteSchema);
 // ////////////////////////
 // POLL MODEL
 // ////////////////////////
-VoteModel = mongoose.model('Vote', VoteSchema);
+const VoteModel = mongoose.model('Vote', VoteSchema);
 
 // ////////////////////////
 // MODULE EXPORTS

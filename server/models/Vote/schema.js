@@ -3,7 +3,6 @@
 // ////////////////////////
 
 const mongoose = require('mongoose');
-const util = require('../../util');
 
 // ////////////////////////
 // POLL SCHEMA
