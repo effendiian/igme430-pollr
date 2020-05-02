@@ -1,25 +1,39 @@
 <html lang="en">
 <head>
-    <!-- META -->
-    <meta charset="utf-8" />
-    <meta name="description" content="Make polls. Make decisions." />
-    <meta name="keywords" content="Polls" />
-    <meta name="author" content="Ian Effendi" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pollr</title>
 
-     <!-- FAVICON + STYLESHEETS -->
-    <link rel="shortcut icon" href="/assets/img/favicon.png" />
-    <link rel="stylesheet" href="https://use.typekit.net/jif8tkh.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
-    {{#each css}}
-        <link rel="stylesheet" type="text/css" href="/assets/css/{{this}}.css" />
-    {{/each}}
+        {{!-- Replace meta content here --}}
+        {{{block 'meta-content'}}}
 
-    <!-- SITE-WIDE SCRIPTS -->
-    <!-- nothing so far -->
+        {{!-- Custom <head> content per page can be added. --}}
+        {{{block 'head-styles'}}}
+
+        {{!-- Custom <script> content per page can be added. --}}        
+        {{{block 'head-scripts'}}}
+
 </head>
 <body>
-    {{{body}}}
+
+        <header>    
+                {{!-- 
+                    `includes/header`
+                --}}
+                {{> includes/header}}
+        </header>
+
+        <main id="content">
+                {{!-- Main page content goes here. --}}
+                {{{block 'main'}}}
+        </main>
+
+        <footer>
+                {{!-- 
+                    `includes/footer`
+                --}}
+                {{> includes/footer}}
+        </footer>
+
+        {{!-- Custom scripts per page can be added here. --}}
+        {{{block 'body-scripts'}}}
+
 </body>
 </html>

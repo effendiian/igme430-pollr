@@ -13,7 +13,7 @@ const { middleware } = require('../middleware');
 // Routes would go here.
 const routes = {
   getIndex: (req, res) => {
-    res.render('home', { css: ['home'] });
+    res.render('pages/home');
   },
   getLogin: (req, res) => {
     res.render('login', { isLogin: true, css: ['login'] });
@@ -40,12 +40,35 @@ const configure = (app) => {
 
   /* GET Methods */
 
+  app.get('/', (req, res) => {
+    res.render('pages/home');
+  });
+
+  app.get('/dashboard', (req, res) => {
+    res.render(
+      'pages/app', {
+        navbarLinks: [ 
+          { title: 'Pricing', href: '/pricing' },
+          { title: 'Login', href: '/login' },
+          { title: 'Signup', href: '/signup' },
+        ],
+        footerLinks: [
+          { title: 'About', href: '/about' },
+          { title: 'Contact', href: '/contact' },
+        ],
+      }
+    );
+  });
+
+/*
+
   // App.
-  app.get('/dashboard', middleware.secure.requiresSecure, (req, res) => {
-    res.render('app', { 
-      title: 'Dashboard',
-      layout: 'react', 
-      scripts: [ 'authentication' ] });
+  app.get('/dashboard', (req, res) => {
+    res.render('pages/app', { 
+        navbarLinks: [
+          { title: "Example", href: "/dashboard" }
+        ],
+     })
   });
 
   // Login/Signup page.
@@ -62,7 +85,7 @@ const configure = (app) => {
   // Home page.
   app.get('/home', middleware.secure.requiresSecure, routes.getIndex);
   app.get('/index', middleware.secure.requiresSecure, routes.getIndex);
-  app.get('/', middleware.secure.requiresSecure, routes.getIndex);
+  app.get('/', middleware.secure.requiresSecure, routes.getIndex);*/
 };
 
 // ////////////////////////

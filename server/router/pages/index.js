@@ -1,0 +1,20 @@
+// ////////////////////////
+// MODULE/LIBRARY IMPORT
+// ////////////////////////
+const factory = require('./../factory.js');
+
+// ////////////////////////
+// MEMBER INIT
+// ////////////////////////
+
+// Configure the application with the page routes.
+const route = (app) => {
+
+}; 
+
+// ////////////////////////
+// MODULE EXPORTS
+// ////////////////////////
+module.exports = {
+    route
+};

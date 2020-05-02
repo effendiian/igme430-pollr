@@ -44,7 +44,8 @@ const configure = (app, config) => {
   database.configure(app, config);
 
   // VIEW ENGINE
-  app.engine('handlebars', handlebars(config.handlebars));
+  const hbsInstance = handlebars.create(config.handlebars);
+  app.engine('handlebars', hbsInstance.engine);
   app.set('view engine', 'handlebars');
   app.set('views', config.middleware.path.views);
 

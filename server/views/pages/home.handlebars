@@ -1,0 +1,25 @@
+{{!-- pages/home.handlebars --}}
+
+{{!-- Use the main layout --}}
+{{#> layouts/main title="Pollr | Home" }}
+
+    {{!-- Add in the meta, styles, and head scripts --}}
+    {{#extend "meta-content"}}
+        {{> includes/meta}}
+    {{/extend}}
+    
+    {{#extend "head-styles"}}
+        {{> includes/styles}}
+        {{> style bundle="home" }}
+    {{/extend}}
+    
+    {{#extend "head-scripts"}}
+        {{> includes/scripts}}
+    {{/extend}}
+
+    {{!-- Overwrite the main content --}}
+    {{#extend "main"}}
+        {{> includes/hero }}        
+    {{/extend}}
+    
+{{/layouts/main}}

@@ -1,0 +1,37 @@
+{{!-- pages/app.handlebars --}}
+
+{{!-- Use the main layout --}}
+{{#> layouts/main title="Pollr | Dashboard" }}
+
+    {{!-- Add in the meta, styles, and head scripts --}}
+    {{#extend "meta-content"}}
+        {{> includes/meta}}
+    {{/extend}}
+    
+    {{#extend "head-styles"}}
+        {{> includes/styles}}
+    {{/extend}}
+
+    {{!-- Include the React scripts --}}
+    {{#extend "head-scripts"}}
+        {{> includes/react-scripts}}
+    {{/extend}}
+
+
+    {{!-- Overwrite the main content --}}
+    {{#extend "main-content"}}
+        <section id="sidebar">
+            Sidebar
+        </section>      
+        <section id="dashboard">
+            Dashboard
+        </section>
+    {{/extend}}
+
+    {{!-- Add body scripts --}}
+    {{#extend "body-scripts"}}
+        {{> script bundle="util" }}
+        {{> script bundle="feed" }}
+    {{/extend}}
+
+{{/layouts/main}}

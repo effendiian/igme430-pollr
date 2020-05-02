@@ -1,0 +1,11 @@
+// ////////////////////////
+// MODULE/LIBRARY IMPORT
+// ////////////////////////
+
+const actions = require('./../../controllers');
+
+// ////////////////////////
+// MODULE EXPORTS
+// ////////////////////////
+
+module.exports = actions.getPageAction('pages/home');

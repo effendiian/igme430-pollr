@@ -1,0 +1,25 @@
+{{!-- pages/about.handlebars --}}
+
+{{#> layouts/main title="Pollr | About" }}
+
+    {{!-- Add in the meta, styles, and head scripts --}}
+    {{#extend "meta-content"}}
+        {{> includes/meta}}
+    {{/extend}}
+    
+    {{#extend "head-styles"}}
+        {{> includes/styles}}
+        {{> style bundle="about" }}
+    {{/extend}}
+    
+    {{#extend "head-scripts"}}
+        {{> includes/scripts}}
+    {{/extend}}
+
+    {{!-- Overwrite the main content --}}
+    {{#extend "main"}}
+        <div>About: This Website</div>
+        <div>About: The Developer</div>
+    {{/extend}}
+    
+{{/layouts/main}}
