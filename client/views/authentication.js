@@ -1,11 +1,11 @@
-
 // ////////////////////////
 // MODULE/LIBRARY IMPORT
 // ////////////////////////
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import LoginForm from '../components/forms/LoginForm';
-import SignupForm from '../components/forms/LoginForm';
+import SignupForm from '../components/forms/SignupForm';
 import util from '../util';
 
 // ////////////////////////
@@ -23,7 +23,7 @@ const handle = {
     const usernameField = document.getElementById('user');
     const passwordField = document.getElementById('password');
 
-    if (usernameField.value == '' || passwordField.value == '') {
+    if (usernameField.value === '' || passwordField.value === '') {
       util.setErrorMessage('Username or Password is empty.');
       return false;
     }
@@ -46,7 +46,7 @@ const handle = {
     const passwordField = document.getElementById('password');
     const verifyPasswordField = document.getElementById('verifyPassword');
 
-    if (usernameField.value == '' || passwordField.value == '' || verifyPasswordField.value == '') {
+    if (usernameField.value === '' || passwordField.value === '' || verifyPasswordField.value === '') {
       util.setErrorMessage('Username or Password is empty.');
       return false;
     }

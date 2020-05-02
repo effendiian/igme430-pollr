@@ -38,7 +38,7 @@ const sendXHR = (xhr, body) => new Promise((resolve, reject) => {
 
   // eslint-disable-next-line no-param-reassign
   xhr.onreadystatechange = () => {
-    if (xhr.readyState == 4) {
+    if (xhr.readyState === 4) {
       return resolve(xhr);
     }
     return reject(xhr.status);

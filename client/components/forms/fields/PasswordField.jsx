@@ -1,17 +1,45 @@
+// ////////////////////////
+// MODULE / LIBRARY IMPORT
+// ////////////////////////
+
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Input from './inputs/Input';
+import Label from './inputs/Label';
+
+// ////////////////////////
+// MEMBERS
+// ////////////////////////
 
 // Password Field object.
 class PasswordField extends Component {
   render() {
     const {
       id,
-      className,
+      title,
+      name,
       value,
       placeholder,
     } = this.props;
 
-    return (<input type="password" id={id} className={className} value={value} placeholder={placeholder} />);
+    return (<React.Fragment>
+      <Label name={name} title={title} ></Label>
+      <Input type="password" id={id} name={name} value={value} placeholder={placeholder} ></Input>
+    </React.Fragment>);
   }
 }
+
+// Password.
+PasswordField.propTypes = {
+  id: PropTypes.string,
+  title: PropTypes.string,
+  name: PropTypes.string,
+  placeholder: PropTypes.string,
+  value: PropTypes.string,
+};
+
+// ////////////////////////
+// EXPORT
+// ////////////////////////
 
 export default PasswordField;

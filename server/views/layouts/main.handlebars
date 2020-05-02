@@ -1,39 +1,26 @@
 <html lang="en">
 <head>
-
-        {{!-- Replace meta content here --}}
+        {{!-- Extend metadata and other <head> elements --}}
         {{{block 'meta-content'}}}
-
-        {{!-- Custom <head> content per page can be added. --}}
+        {{!-- Extend styles in the <head> element --}}
         {{{block 'head-styles'}}}
-
-        {{!-- Custom <script> content per page can be added. --}}        
+        {{!-- Extend scripts in the <head> element --}}
         {{{block 'head-scripts'}}}
-
 </head>
 <body>
-
-        <header>    
-                {{!-- 
-                    `includes/header`
-                --}}
-                {{> includes/header}}
+        <header class="container-md" >    
+        {{!-- Extend with header content --}}
+        {{{block 'header'}}}
         </header>
-
-        <main id="main">
-                {{!-- Main page content goes here. --}}
-                {{{block 'main'}}}
+        <main id="main" class="container-md" >
+        {{!-- Extend with the main page content --}}
+        {{{block 'main'}}}
         </main>
-
         <footer>
-                {{!-- 
-                    `includes/footer`
-                --}}
-                {{> includes/footer}}
-        </footer>
-
-        {{!-- Custom scripts per page can be added here. --}}
+        {{!-- Extend with footer content --}}
+        {{{block 'footer'}}}
+        </footer class="container-md" >
+        {{!-- Extend with scripts at the foot of the page --}}
         {{{block 'body-scripts'}}}
-
 </body>
 </html>

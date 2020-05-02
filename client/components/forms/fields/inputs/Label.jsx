@@ -1,4 +1,13 @@
+// ////////////////////////
+// MODULE / LIBRARY IMPORT
+// ////////////////////////
+
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+// ////////////////////////
+// MEMBERS
+// ////////////////////////
 
 // Label component.
 class Label extends Component {
@@ -13,5 +22,16 @@ class Label extends Component {
     );
   }
 }
+
+// Prop type validation.
+Label.propTypes = {
+  title: PropTypes.string,
+  name: PropTypes.string,
+};
+
+
+// ////////////////////////
+// EXPORT
+// ////////////////////////
 
 export default Label;

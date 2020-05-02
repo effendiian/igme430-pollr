@@ -1,5 +1,14 @@
+// ////////////////////////
+// MODULE / LIBRARY IMPORT
+// ////////////////////////
+
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import SubmitField from './fields/SubmitField';
+
+// ////////////////////////
+// MEMBERS
+// ////////////////////////
 
 // Generic form.
 class UserForm extends Component {
@@ -20,5 +29,19 @@ class UserForm extends Component {
     );
   }
 }
+
+// Prop validation.
+UserForm.propTypes = {
+  id: PropTypes.string,
+  callback: PropTypes.string,
+  action: PropTypes.string,
+  className: PropTypes.string,
+  submitValue: PropTypes.string,
+  children: PropTypes.node,
+};
+
+// ////////////////////////
+// EXPORTS
+// ////////////////////////
 
 export default UserForm;

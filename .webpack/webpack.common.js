@@ -13,6 +13,7 @@ module.exports = {
   externals: {
     "react": "React",
     "react-dom": "ReactDOM",
+    "prop-types": "PropTypes",
   },
   entry: {
     util: './client/util/index.js',
@@ -35,12 +36,16 @@ module.exports = {
         ],
         loader: 'eslint-loader',
         options: {
-            cache: true,
+            cache: false,
             fix: true,
             emitWarning: true,
             failOnError: false,
             configFile: path.resolve(`${__dirname}/../client/.eslintrc`)
         },
+      },
+      {
+        test: /\.css$/i,
+        use: [ 'style-loader', 'css-loader' ],
       },
       {
         test: /\.(js|jsx)$/,
@@ -51,7 +56,8 @@ module.exports = {
             configFile: "./.babelrc.json",
           },
         },
-    }]
+      },
+    ]
   },
   resolve: {
     extensions: [ '.js', '.jsx' ]

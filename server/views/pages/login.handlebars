@@ -1,32 +1,36 @@
-{{!-- pages/home.handlebars --}}
-
+{{!-- pages/login.handlebars --}}
 {{!-- Use the main layout --}}
-{{#> layouts/main title="Pollr | Home" }}
-
-    {{!-- Add in the meta, styles, and head scripts --}}
+{{#> layouts/main title="Pollr | Login" }}
+    {{!-- Add in the meta  --}}
     {{#extend "meta-content"}}
         {{> includes/meta}}
     {{/extend}}
-    
+    {{!-- Add in the styles --}}    
     {{#extend "head-styles"}}
         {{> includes/styles}}
         {{> includes/react-scripts}}
         {{> style bundle="login" }}
-    {{/extend}}
-    
+    {{/extend}}    
+    {{!-- Add in the head scripts --}}
     {{#extend "head-scripts"}}
         {{> includes/scripts}}
     {{/extend}}
-
+    {{!-- Provide this page's header --}}
+    {{#extend "header"}}
+        {{> includes/header}}
+    {{/extend}}
     {{!-- Overwrite the main content --}}
     {{#extend "main"}}
         <div id="content"></div>
         <button id="loginButton">Login</button>
         <button id="signupButton">Signup</button>
     {{/extend}}
-    
+    {{!-- Provide this page's header --}}
+    {{#extend "footer"}}
+        {{> includes/footer}}
+    {{/extend}}    
+    {{!-- Add in the body scripts --}}
     {{#extend "body-scripts"}}
         {{> script bundle="authentication" }}
     {{/extend}}
-
 {{/layouts/main}}
