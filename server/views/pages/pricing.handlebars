@@ -1,13 +1,31 @@
-<html lang="en">
-<head>
-</head>
-<body>
-    {{> header}}
-    <main id="content">
-        <div id="pricingOptions" class="content-main">
-            Pricing options should appear here.
-        </div>
-    </main>
-    {{> footer}}
-</body>
-</html>
+{{!-- pages/pricing.handlebars --}}
+{{!-- Use the main layout --}}
+{{#> layouts/main title="Pollr | Pricing" }}
+    {{!-- Add in the meta, styles, and head scripts --}}
+    {{#extend "meta-content"}}
+        {{> includes/meta}}
+    {{/extend}}    
+    {{!-- Add in the meta, styles, and head scripts --}} 
+    {{#extend "head-styles"}}
+        {{> includes/styles}}
+    {{/extend}}    
+    {{!-- Add in the meta, styles, and head scripts --}}
+    {{#extend "head-scripts"}}
+        {{> includes/scripts}}
+        {{> includes/react-scripts}}
+    {{/extend}}
+    {{!-- Provide this page's header --}}
+    {{#extend "header"}}
+        {{> includes/header}}
+    {{/extend}}
+    {{!-- Overwrite the main content --}}
+    {{#extend "main"}}
+        <div id="content">                
+            <div>Pricing.html - Placeholder content.</div>
+        </div>  
+    {{/extend}}    
+    {{!-- Provide this page's footer --}}
+    {{#extend "footer"}}
+        {{> includes/footer}}
+    {{/extend}}
+{{/layouts/main}}

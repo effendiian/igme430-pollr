@@ -8,12 +8,11 @@
     {{!-- Add in the styles --}}    
     {{#extend "head-styles"}}
         {{> includes/styles}}
-        {{> includes/react-scripts}}
-        {{> style bundle="login" }}
     {{/extend}}    
     {{!-- Add in the head scripts --}}
     {{#extend "head-scripts"}}
         {{> includes/scripts}}
+        {{> includes/react-scripts}}
     {{/extend}}
     {{!-- Provide this page's header --}}
     {{#extend "header"}}
@@ -21,9 +20,11 @@
     {{/extend}}
     {{!-- Overwrite the main content --}}
     {{#extend "main"}}
-        <div id="content"></div>
-        <button id="loginButton">Login</button>
-        <button id="signupButton">Signup</button>
+        <div id="content">
+            <div id="form">The form should be displayed here.</div>
+            <button id="loginButton">Login</button>
+            <button id="signupButton">Signup</button>
+        </div>
     {{/extend}}
     {{!-- Provide this page's header --}}
     {{#extend "footer"}}

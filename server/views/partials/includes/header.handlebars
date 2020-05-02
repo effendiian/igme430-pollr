@@ -1,24 +1,23 @@
 {{!-- includes/header.handlebars --}}
-<nav>
-    <div class="navbar">
-        <div class="navbar-left">
-            <a id="brand-logo" href="/" title="Home">POLLR.</a>
-        </div>    
-        <div class="navbar-right">
-            <ul class="navbar-links">
-                {{#each navbarLinks}}
-                {{!-- 
-                <li class="navbar-link"><a class="navbar-link-style" href="/pricing">PRICING</a></li>
-                <li class="navbar-link"><a class="navbar-link-style" href="/login">LOGIN</a></li>
-                <li class="navbar-link"><a class="navbar-link-style" href="/signup">SIGNUP</a></li>
-                --}}
-                <li class="navbar-link"><a class="navbar-link-style" href={{this.href}}>{{this.title}}</a></li>
-                {{/each}}
-            </ul>
-        </div>
-    </div>
+<div class="container mx-auto my-2">
+    <nav class="navbar navbar-expand-sm shadow-sm flex-column flex-sm-row navbar-light bg-light border-bottom border-primary rounded-top flex-wrap">
+        <a id="brand" class="navbar-brand flex-lg-fill" href="/" title="Home">
+            <img class="d-inline-block align-text-bottom" src="/assets/img/logo.png" width="24" height="24" />
+            POLLR.
+        </a>
+        <ul class="navbar-nav">
+            {{#each navbarLinks}}
+            {{!-- 
+            <li class="navbar-link"><a class="navbar-link-style" href="/pricing">PRICING</a></li>
+            <li class="navbar-link"><a class="navbar-link-style" href="/login">LOGIN</a></li>
+            <li class="navbar-link"><a class="navbar-link-style" href="/signup">SIGNUP</a></li>
+            --}}
+            <li class="nav-item"><a class="nav-link" href={{this.href}}>{{this.title}}</a></li>
+            {{/each}}
+        </ul>
+    </nav>
     {{#> notification-bar}}
         {{!-- Customizable notification bar. --}}
         {{> includes/notifications}}
     {{/notification-bar}}
-</nav>
+</div>

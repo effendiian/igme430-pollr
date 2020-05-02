@@ -1,25 +1,31 @@
 {{!-- pages/about.handlebars --}}
-
+{{!-- Use the main layout --}}
 {{#> layouts/main title="Pollr | About" }}
-
     {{!-- Add in the meta, styles, and head scripts --}}
     {{#extend "meta-content"}}
         {{> includes/meta}}
-    {{/extend}}
-    
+    {{/extend}}    
+    {{!-- Add in the meta, styles, and head scripts --}} 
     {{#extend "head-styles"}}
         {{> includes/styles}}
-        {{> style bundle="about" }}
-    {{/extend}}
-    
+    {{/extend}}    
+    {{!-- Add in the meta, styles, and head scripts --}}
     {{#extend "head-scripts"}}
         {{> includes/scripts}}
+        {{> includes/react-scripts}}
     {{/extend}}
-
+    {{!-- Provide this page's header --}}
+    {{#extend "header"}}
+        {{> includes/header}}
+    {{/extend}}
     {{!-- Overwrite the main content --}}
     {{#extend "main"}}
-        <div>About: This Website</div>
-        <div>About: The Developer</div>
+        <div id="content">                
+            <div>About.html - Placeholder content.</div>
+        </div>  
+    {{/extend}}    
+    {{!-- Provide this page's footer --}}
+    {{#extend "footer"}}
+        {{> includes/footer}}
     {{/extend}}
-    
 {{/layouts/main}}
