@@ -6,86 +6,38 @@
 
 // const controllers = require('../controllers');
 const { middleware } = require('../middleware');
+const actions = require('./../controllers');
+const pages = require('./pages');
 
 // ////////////////////////
 // ROUTER OPTIONS
 // ////////////////////////
-// Routes would go here.
-const routes = {
-  getIndex: (req, res) => {
-    res.render('pages/home');
-  },
-  getLogin: (req, res) => {
-    res.render('login', { isLogin: true, css: ['login'] });
-  },
-  getSignup: (req, res) => {
-    res.render('login', { isLogin: false, css: ['login'] });
-  },
-  getPricing: (req, res) => {
-    res.render('pricing', { css: ['home'] });
-  },
-  getAbout: (req, res) => {
-    res.render('about', { isAbout: true, css: ['home'] });
-  },
-  getContact: (req, res) => {
-    res.render('about', { isAbout: false, css: ['home'] });
-  },
-};
+
 
 // ////////////////////////
 // APP CONFIGURATION
 // ////////////////////////
 const configure = (app) => {
-  /* POST Methods */
 
-  /* GET Methods */
+  // Get token.
+  app.get("/getToken", middleware.secure.requiresSecure, actions.getPageToken);
+  app.post("/login", middleware.secure.requiresSecure, actions.User.login);
+  app.post("/signup", middleware.secure.requiresSecure, actions.User.signup);
+  app.get("/logout", middleware.secure.requiresSecure, actions.User.logout);
 
-  app.get('/', (req, res) => {
-    res.render('pages/home');
+  // Configure GET requests for the pages.
+  app.get(pages.dashboard.pattern, middleware.secure.requiresSecure, middleware.auth.requiresLogin, pages.dashboard.action);
+  app.get(pages.login.pattern, middleware.secure.requiresSecure, middleware.auth.requiresLogout, pages.login.action);
+  app.get(pages.signup.pattern, middleware.secure.requiresSecure, middleware.auth.requiresLogout, pages.signup.action);
+  app.get(pages.pricing.pattern, middleware.secure.requiresSecure, pages.pricing.action);
+  app.get(pages.about.pattern, middleware.secure.requiresSecure, pages.about.action);
+  app.get(pages.contact.pattern, middleware.secure.requiresSecure, pages.contact.action);
+
+  // Configure GET requests for all home / index pages.
+  pages.homes.forEach((home) => {
+    app.get(home.pattern, middleware.secure.requiresSecure, home.action);
   });
-
-  app.get('/dashboard', (req, res) => {
-    res.render(
-      'pages/app', {
-        navbarLinks: [ 
-          { title: 'Pricing', href: '/pricing' },
-          { title: 'Login', href: '/login' },
-          { title: 'Signup', href: '/signup' },
-        ],
-        footerLinks: [
-          { title: 'About', href: '/about' },
-          { title: 'Contact', href: '/contact' },
-        ],
-      }
-    );
-  });
-
-/*
-
-  // App.
-  app.get('/dashboard', (req, res) => {
-    res.render('pages/app', { 
-        navbarLinks: [
-          { title: "Example", href: "/dashboard" }
-        ],
-     })
-  });
-
-  // Login/Signup page.
-  app.get('/login', middleware.secure.requiresSecure, middleware.auth.requiresLogout, routes.getLogin);
-  app.get('/signup', middleware.secure.requiresSecure, middleware.auth.requiresLogout, routes.getSignup);
-
-  // Pricing page.
-  app.get('/pricing', middleware.secure.requiresSecure, routes.getPricing);
-
-  // About/Contact page.
-  app.get('/about', middleware.secure.requiresSecure, routes.getAbout);
-  app.get('/contact', middleware.secure.requiresSecure, routes.getContact);
-
-  // Home page.
-  app.get('/home', middleware.secure.requiresSecure, routes.getIndex);
-  app.get('/index', middleware.secure.requiresSecure, routes.getIndex);
-  app.get('/', middleware.secure.requiresSecure, routes.getIndex);*/
+  
 };
 
 // ////////////////////////

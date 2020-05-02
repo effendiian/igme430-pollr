@@ -64,7 +64,7 @@ const generateSalt = (password, callback) => {
 
 // Authenticate the user login.
 const authenticate = function (actualUsername, actualPassword, callback) {
-  this.findByUsername(actualUsername, (err, user) => {
+  return this.findByUsername(actualUsername, (err, user) => {
     if (err) {
       // Error in query. Malformed request.
       return callback(err);

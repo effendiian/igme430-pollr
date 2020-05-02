@@ -1,20 +1,29 @@
 // ////////////////////////
 // MODULE/LIBRARY IMPORT
 // ////////////////////////
-const factory = require('./../factory.js');
+
+const actions = require('./../../controllers');
 
 // ////////////////////////
 // MEMBER INIT
 // ////////////////////////
 
-// Configure the application with the page routes.
-const route = (app) => {
-
-}; 
+// Actions and their patterns.
+const routes = {
+    homes: [
+        { method: 'get', pattern: '/', action: actions.getPageAction('pages/home') },
+        { method: 'get', pattern: '/index', action: actions.getPageAction('pages/home') },
+        { method: 'get', pattern: '/home', action: actions.getPageAction('pages/home') },
+    ],
+    about: { method: 'get', pattern: '/about', action: actions.getPageAction('pages/about') },
+    contact: { method: 'get', pattern: '/contact', action: actions.getPageAction('pages/about') },
+    dashboard: { method: 'get', pattern: '/dashboard', action: actions.getPageAction('pages/app') },
+    login: { method: 'get', pattern: '/login', action: actions.getFormPageAction('pages/login') },
+    signup: { method: 'get', pattern: '/signup', action: actions.getFormPageAction('pages/login') },
+    pricing: { method: 'get', pattern: '/pricing', action: actions.getPageAction('pages/pricing') },
+};
 
 // ////////////////////////
 // MODULE EXPORTS
 // ////////////////////////
-module.exports = {
-    route
-};
+module.exports = routes;

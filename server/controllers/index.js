@@ -1,18 +1,14 @@
 /* CONTROLLERS */
 
-
-// User.js
-// Poll.js
-// Choice.js
-// Vote.js
-// Generic.js
-
-
 // ////////////////////////
 // MODULE IMPORTS
 // ////////////////////////
 
 const generics = require('./generic.js');
+const User = require('./User.js');
+// const Poll = require('./Poll.js');
+// const Choice = require('./Poll.js');
+// const Vote = require('./Poll.js');
 
 // ////////////////////////
 // MODULE EXPORTS
@@ -20,5 +16,8 @@ const generics = require('./generic.js');
 
 // Return factory function.
 module.exports = {
-    getPageAction: generics.getPageAction
+    User,
+    getPageAction: generics.getPageAction,
+    getFormPageAction: generics.getFormPageAction,
+    getPageToken: generics.getPageToken
 }

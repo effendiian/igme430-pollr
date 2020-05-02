@@ -1,11 +1,32 @@
-<html lang="en">
-<head>
-</head>
-<body>
-    {{> header}}
-    <main id="content">
-        Login page. Is Login Page? "{{isLogin}}".
-    </main>
-    {{> footer}}
-</body>
-</html>
+{{!-- pages/home.handlebars --}}
+
+{{!-- Use the main layout --}}
+{{#> layouts/main title="Pollr | Home" }}
+
+    {{!-- Add in the meta, styles, and head scripts --}}
+    {{#extend "meta-content"}}
+        {{> includes/meta}}
+    {{/extend}}
+    
+    {{#extend "head-styles"}}
+        {{> includes/styles}}
+        {{> includes/react-scripts}}
+        {{> style bundle="login" }}
+    {{/extend}}
+    
+    {{#extend "head-scripts"}}
+        {{> includes/scripts}}
+    {{/extend}}
+
+    {{!-- Overwrite the main content --}}
+    {{#extend "main"}}
+        <div id="content"></div>
+        <button id="loginButton">Login</button>
+        <button id="signupButton">Signup</button>
+    {{/extend}}
+    
+    {{#extend "body-scripts"}}
+        {{> script bundle="authentication" }}
+    {{/extend}}
+
+{{/layouts/main}}
