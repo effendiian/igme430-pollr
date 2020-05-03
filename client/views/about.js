@@ -39,7 +39,6 @@ const renderText = (text) => {
 // Media element.
 const renderMediaElement = () => {
   renderResourceComponent(
-
     <>
       <MediaElement
         thumbnail={undefined}

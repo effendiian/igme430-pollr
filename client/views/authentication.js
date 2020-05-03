@@ -3,121 +3,102 @@
 // ////////////////////////
 
 import React from 'react';
-import ReactDOM from 'react-dom';
-import LoginForm from '../components/forms/LoginForm';
-import SignupForm from '../components/forms/SignupForm';
 import util from '../util';
 
 // ////////////////////////
 // MEMBER INIT
 // ////////////////////////
 
-util.isLoaded('authentication.js');
+const { ElementStore, SelectorTable } = util.elements;
 
-// Validate form information.
-const handle = {
-  login: (e) => {
-    e.preventDefault();
-    util.clearNotification();
+// ////////////////////////
+// MEMBERS
+// ////////////////////////
 
-    const usernameField = document.getElementById('user');
-    const passwordField = document.getElementById('password');
+// Selectors for the elements.
+const page = new ElementStore(
+  new SelectorTable({
+    root: '#content',
+    form: '#mainForm',
+    loginButton: '#loginButton',
+    signupButton: '#signupButton',
+    prompt: '#formPrompt',
+  })
+);
 
-    if (usernameField.value === '' || passwordField.value === '') {
-      util.setErrorMessage('Username or Password is empty.');
-      return false;
-    }
-
-    const form = document.getElementById('loginForm');
-    const csrfField = document.querySelector('input[name=_csrf]');
-
-    util.postAjax({
-      csrfToken: csrfField.value,
-      username: usernameField.value,
-      password: passwordField.value,
-    }, form.action, { 'Content-Type': 'application/x-www-form-urlencoded' });
-    return false;
-  },
-  signup: (e) => {
-    e.preventDefault();
-    util.clearNotification();
-
-    const usernameField = document.getElementById('user');
-    const passwordField = document.getElementById('password');
-    const verifyPasswordField = document.getElementById('verifyPassword');
-
-    if (usernameField.value === '' || passwordField.value === '' || verifyPasswordField.value === '') {
-      util.setErrorMessage('Username or Password is empty.');
-      return false;
-    }
-
-    if (passwordField.value !== verifyPasswordField.value) {
-      util.setErrorMessage('Passwords do not match.');
-      return false;
-    }
-
-    const form = document.getElementById('loginForm');
-    const csrfField = document.querySelector('input[name=_csrf]');
-
-    util.postAjax({
-      csrfToken: csrfField.value,
-      username: usernameField.value,
-      password: passwordField.value,
-    }, form.action, { 'Content-Type': 'application/x-www-form-urlencoded' });
-    return false;
-  },
+// Render component to Resources.
+const renderResourceComponent = (component) => {
+  util.view.renderComponent(
+    component,
+    page.elements.form,
+  );
 };
 
-const create = {
-  login: (csrf) => {
-    ReactDOM.render(
-      <LoginForm csrf={csrf} callback={handle.login} />,
-      document.querySelector('#content')
-    );
-  },
-  signup: (csrf) => {
-    ReactDOM.render(
-      <SignupForm csrf={csrf} callback={handle.signup} />,
-      document.querySelector('#content')
-    );
-  },
+// Render login form.
+const renderLoginForm = (csrf) => {
+  renderResourceComponent(
+    <div>Login Form</div>
+  );
 };
 
-// Setup the page.
-const setup = (csrf) => {
-  // Buttons.
-  const button = {
-    login: document.getElementById('loginButton'),
-    signup: document.getElementById('signupButton'),
-  };
+// Render signup form.
+const renderSignupForm = (csrf) => {
+  renderResourceComponent(
+    <div>Signup Form</div>
+  );
+};
 
-  console.log('Is this working?');
+// Clear the page.
+const clearPage = () => {
+  // Clear the table.
+  console.dir(page.elements.root);
+  page.elements.form.innerHTML = '';
+  page.elements.prompt.innerHTML = '';
+};
 
-  button.login.addEventListener('click', (e) => {
+// Get the CSRF token and log it to the console.
+const getCSRFToken = () => util.ajax.getToken();
+
+// Setup the current page using the csrfToken.
+const setup = (csrfToken) => {
+  // Add the the event listeners.
+  page.elements.loginButton.addEventListener('click', (e) => {
     e.preventDefault();
-    create.signup(csrf);
+    renderLoginForm(csrfToken);
     return false;
   });
 
-  button.signup.addEventListener('click', (e) => {
+  page.elements.signupButton.addEventListener('click', (e) => {
     e.preventDefault();
-    create.login(csrf);
+    renderSignupForm(csrfToken);
     return false;
   });
 
-  // Default to the login window.
-  create.login(csrf);
+  const windowPath = window.location.pathname.substring(0, 7);
+  console.log(windowPath);
+  if (windowPath === '/signup') {
+    renderSignupForm(csrfToken);
+  } else {
+    renderLoginForm(csrfToken);
+  }
 };
 
-// Run when ready.
-const ready = () => {
-  util.getToken().then((result) => {
-    console.log(`Status: ${result.status}`);
-    setup(result.csrfToken);
-  }).catch((e) => {
-    console.error('There was an issue authenticating your request to the server.', e);
+// On render, this will run.
+const renderPage = () => {
+
+};
+
+// ////////////////////////
+// RENDER
+// ////////////////////////
+
+// Run this function to render the window on load.
+util.helpers.onLoad(1000)
+  .then(() => page.load())
+  .then(() => clearPage())
+  .then(() => getCSRFToken())
+  .then((token) => setup(token))
+  .then(() => renderPage())
+  .catch((e) => {
+    console.error(e);
   });
-};
-
-// Render the signup form.
-window.addEventListener('load', ready);

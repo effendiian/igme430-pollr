@@ -1,0 +1,24 @@
+{{!-- form.handlebars --}}
+<div class="container w-50 m-2 my-sm-5 p-3 p-sm-5 mx-auto shadow bg-light">
+  <form id="mainForm" class="">
+    <h1 id="formLabel" class="text-center">Sign In</h1>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input id="username" type="text" class="form-control" placeholder="Enter your username" />
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input id="password" type="password" class="form-control" placeholder="Enter your password" />
+    </div>
+    <div class="form-group">
+      <label for="verifyPassword">Verify Password</label>
+      <input id="verifyPassword" type="password" class="form-control" placeholder="Verify your password" />
+    </div>
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+  </form>
+</div>
+<div class="container mx-auto text-center" role="group">
+  <p id="formPrompt" class="text-muted">Not registered? <a href="#">Create an account.</a></p>
+  <button id="loginButton" class="btn btn-secondary">Login</button>
+  <button id="signupButton" class="btn btn-secondary">Sign Up</button>
+</div>

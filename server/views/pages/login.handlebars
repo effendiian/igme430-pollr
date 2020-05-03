@@ -21,9 +21,7 @@
     {{!-- Overwrite the main content --}}
     {{#extend "main"}}
         <div id="content">
-            <div id="form">The form should be displayed here.</div>
-            <button id="loginButton">Login</button>
-            <button id="signupButton">Signup</button>
+            {{> form }}
         </div>
     {{/extend}}
     {{!-- Provide this page's header --}}
