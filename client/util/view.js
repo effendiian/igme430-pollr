@@ -5,9 +5,11 @@
 // MODULE / LIBRARY IMPORT
 // ////////////////////////
 
-// import React from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
+import Alert from '../components/Alert';
 import errors from './error.js';
+import promises from './promise.js';
 
 // ////////////////////////
 // FUNCS
@@ -70,6 +72,28 @@ const renderOnPage = (content, target) => {
 // Render a component to the DOM.
 const renderComponent = (component, target) => renderOnPage(component, target);
 
+// Render a notification message for a set period of time.
+const renderNotification = ({ message, alert }, target, timeout) => {
+  let timer;
+  const component = <Alert message={message} alert={alert} visible />;
+
+  const showElement = () => renderComponent(React.cloneElement(component, { visible: true }), target);
+
+  const hideElement = () => renderComponent(React.cloneElement(component, { visible: false }), target);
+
+  // Create a promise.
+  promises.createPromise((resolve, reject) => {
+    showElement();
+    timer = window.setTimeout(() => {
+      window.clearTimeout(timer);
+      return resolve(true);
+    }, timeout);
+  }).then(() => {
+    hideElement();
+  });
+};
+
+
 // ////////////////////////
 // EXPORT
 // ////////////////////////
@@ -78,6 +102,7 @@ export default {
   renderOnPage,
   renderPlaceholder,
   renderComponent,
+  renderNotification,
   clearTargetElement,
   verifyContent,
   contentExists,

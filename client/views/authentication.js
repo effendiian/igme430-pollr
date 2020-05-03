@@ -4,6 +4,9 @@
 
 import React from 'react';
 import util from '../util';
+import LoginForm from '../components/forms/LoginForm';
+import SignupForm from '../components/forms/SignupForm';
+import UserPrompt from '../components/forms/fragments/UserPrompt';
 
 // ////////////////////////
 // MEMBER INIT
@@ -23,11 +26,28 @@ const page = new ElementStore(
     loginButton: '#loginButton',
     signupButton: '#signupButton',
     prompt: '#formPrompt',
+    formLabel: '#formLabel',
   })
 );
 
+// Render form title.
+const renderTitle = (text) => {
+  util.view.renderPlaceholder(
+    text,
+    page.elements.formLabel
+  );
+};
+
+// Render the prompt.
+const renderPrompt = (component) => {
+  util.view.renderComponent(
+    component,
+    page.elements.prompt
+  );
+};
+
 // Render component to Resources.
-const renderResourceComponent = (component) => {
+const renderForm = (component) => {
   util.view.renderComponent(
     component,
     page.elements.form,
@@ -36,15 +56,25 @@ const renderResourceComponent = (component) => {
 
 // Render login form.
 const renderLoginForm = (csrf) => {
-  renderResourceComponent(
-    <div>Login Form</div>
+  renderTitle('Sign In');
+  renderPrompt(<UserPrompt isLogin />);
+  renderForm(
+    <LoginForm csrf={csrf} onSubmit={(e) => {
+      e.preventDefault();
+      console.log('Logging in!');
+    }} />
   );
 };
 
 // Render signup form.
 const renderSignupForm = (csrf) => {
-  renderResourceComponent(
-    <div>Signup Form</div>
+  renderTitle('Sign Up');
+  renderPrompt(<UserPrompt />);
+  renderForm(
+    <SignupForm csrf={csrf} onSubmit={(e) => {
+      e.preventDefault();
+      console.log('Signing up!');
+    }}/>
   );
 };
 
