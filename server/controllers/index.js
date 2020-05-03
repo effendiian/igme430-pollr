@@ -18,6 +18,7 @@ const User = require('./User.js');
 module.exports = {
     User,
     getPageAction: generics.getPageAction,
-    getFormPageAction: generics.getFormPageAction,
-    getPageToken: generics.getPageToken
+    getPageForm: generics.getPageForm,
+    getPageToken: generics.getPageToken,
+    getPageRedirect: generics.getPageRedirect,
 }

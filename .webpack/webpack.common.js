@@ -21,6 +21,7 @@ module.exports = {
     feed: './client/views/feed.js',
     poll: './client/views/poll.js',
     profile: './client/views/profile.js',
+    pricing: './client/views/pricing.js',
   },
   output: {
       path: path.resolve(`${__dirname}/../hosted/js`)
@@ -36,7 +37,7 @@ module.exports = {
         ],
         loader: 'eslint-loader',
         options: {
-            cache: false,
+            cache: true,
             fix: true,
             emitWarning: true,
             failOnError: false,

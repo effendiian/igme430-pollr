@@ -20,8 +20,16 @@
     {{/extend}}
     {{!-- Overwrite the main content --}}
     {{#extend "main"}}
-        <div id="content">                
-            <div>About.html - Placeholder content.</div>
+        <div id="content" class="container-md mx-auto">     
+            <div class="row">
+                <div class="col-sm d-none d-sm-block"></div>
+                <div class="col-sm-8 col-md-6">
+                    {{> bio-info}}           
+                    {{> about-info}}
+                    {{> contact-info}}
+                </div>
+                <div class="col-sm d-none d-sm-block"></div>
+            </div>
         </div>  
     {{/extend}}    
     {{!-- Provide this page's footer --}}

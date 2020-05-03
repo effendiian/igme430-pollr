@@ -20,12 +20,16 @@
     {{/extend}}
     {{!-- Overwrite the main content --}}
     {{#extend "main"}}
-        <div id="content">                
-            <div>Pricing.html - Placeholder content.</div>
-        </div>  
+        <div id="content" class="container-fluid">
+            {{> pricing-table}}
+        </div>
     {{/extend}}    
     {{!-- Provide this page's footer --}}
     {{#extend "footer"}}
         {{> includes/footer}}
+    {{/extend}}
+    {{!-- Add in the body scripts --}}
+    {{#extend "body-scripts"}}
+        {{> script bundle="pricing" }}
     {{/extend}}
 {{/layouts/main}}

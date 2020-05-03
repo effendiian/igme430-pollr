@@ -25,7 +25,7 @@ const getPageAction = (page) => {
 };
 
 // Returns function for a specific page.
-const getFormPageAction = (page) => {
+const getPageForm = (page) => {
     return (req, res) => {
         res.render(page, {
             csrfToken: generateToken(req),
@@ -49,6 +49,13 @@ const getPageToken = (req, res) => {
     });
 };
 
+// Redirect page.
+const getPageRedirect = (destination) => {
+    return (req, res) => {
+        return res.redirect(`${destination}`);
+    }
+};
+
 // ////////////////////////
 // MODULE EXPORTS
 // ////////////////////////
@@ -57,5 +64,6 @@ const getPageToken = (req, res) => {
 module.exports = {
     getPageToken,
     getPageAction,
-    getFormPageAction,
+    getPageRedirect,
+    getPageForm,
 }

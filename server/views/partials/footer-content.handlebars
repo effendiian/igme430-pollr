@@ -1,17 +1,17 @@
 {{!-- footer-content.handlebars --}}
-<div class="my-auto" "height: 3px;" >
-    <nav class="d-flex flex-md-row flex-column align-items-center">
-        <div class="flex-md-fill">
-            <p id="copyright" class="d-block p-2">© 2020 Ian Effendi</p>
+<div class="my-auto" >
+    <nav class="d-flex flex-sm-row flex-column align-items-center m-2">
+        <div class="flex-sm-fill">
+            <p id="copyright" class="text-muted d-block m-0 p-1 p-sm-2">© 2020 Ian Effendi</p>
         </div>
-        <ul class="m0 list-inline">
+        <ul class="m-0 list-inline">
             {{#each footerLinks}}
             {{!-- 
             <li class="navbar-link"><a class="navbar-link-style" href="/pricing">PRICING</a></li>
             <li class="navbar-link"><a class="navbar-link-style" href="/login">LOGIN</a></li>
             <li class="navbar-link"><a class="navbar-link-style" href="/signup">SIGNUP</a></li>
             --}}
-            <li class="list-inline-item"><a class="d-inline-block p-2" href={{this.href}}>{{this.title}}</a></li>
+            <li class="list-inline-item"><a class="d-inline-block p-1 p-sm-2 text-decoration-none" href={{this.href}}>{{this.title}}</a></li>
             {{/each}}
         </ul>
     </nav>
