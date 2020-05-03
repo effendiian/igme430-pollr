@@ -92,7 +92,7 @@ class ElementStore {
       if (!limit && selector === selectors[key]) {
         limit = 1;
       }
-      console.log(`Loading element [${key}] (${selector}) - Limit: ${limit}.`);
+      // console.log(`Loading element [${key}] (${selector}) - Limit: ${limit}.`);
       return loadElement(key, selector, limit)
         .then((result) => {
           if (!result) {

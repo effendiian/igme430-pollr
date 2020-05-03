@@ -28,6 +28,8 @@ const sendError = (error) => {
 export default {
   send: sendError,
   create: createError,
+  noRenderContent: createError('No render content was provided.'),
+  noRenderTarget: createError('No render target was provided.'),
   windowNotLoaded: createError('The window has not loaded.'),
   documentNotReady: createError('DOM elements in the document are not ready.'),
   noCallbackProvided: createError('No callback provided to the promise.'),

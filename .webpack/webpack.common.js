@@ -20,6 +20,7 @@ module.exports = {
     authentication: './client/views/authentication.js',
     feed: './client/views/feed.js',
     poll: './client/views/poll.js',
+    about: './client/views/about.js',
     profile: './client/views/profile.js',
     pricing: './client/views/pricing.js',
   },

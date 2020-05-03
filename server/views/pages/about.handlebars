@@ -36,4 +36,8 @@
     {{#extend "footer"}}
         {{> includes/footer}}
     {{/extend}}
+    {{!-- Add in body scripts --}}
+    {{#extend "body-scripts"}}
+        {{> script bundle="about" }}
+    {{/extend}}
 {{/layouts/main}}

@@ -66,7 +66,7 @@ const setNotification = (message) => {
 };
 
 // Render on load. Returns promise.
-const renderOnLoad = (timeLimit = 1000) => promises.createTimedPromise(timeLimit, (resolve, reject) => window.addEventListener('load', (evt) => {
+const onLoad = (timeLimit = 1000) => promises.createTimedPromise(timeLimit, (resolve, reject) => window.addEventListener('load', (evt) => {
   if (!window || !isReady(document)) {
     return reject(errors.windowNotLoaded);
   }
@@ -79,12 +79,12 @@ const renderOnLoad = (timeLimit = 1000) => promises.createTimedPromise(timeLimit
 // ////////////////////////
 
 export default {
+  onLoad,
   onReady,
   isReady,
   isInteractive,
   clearNotification,
   setNotification,
-  renderOnLoad,
 };
 
 
