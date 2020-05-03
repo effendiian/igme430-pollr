@@ -7,6 +7,7 @@ import errors from './error.js';
 import promises from './promise.js';
 import ajax from './ajax.js';
 import helpers from './helpers.js';
+import elements from './elements.js';
 
 // ////////////////////////
 // EXPORT
@@ -17,4 +18,5 @@ export default {
   promises,
   ajax,
   helpers,
+  elements,
 };

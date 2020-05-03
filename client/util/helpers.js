@@ -65,85 +65,6 @@ const setNotification = (message) => {
   document.getElementById('notifications').innerText = message;
 };
 
-// Find a single element.
-const findElement = (selector) => new Promise((resolve, reject) => {
-  onReady().then(() => {
-    const el = document.querySelector(selector);
-    return (!el) ? reject(errors.noneFound) : resolve(el);
-  }).catch((e) => { reject(e); });
-});
-
-// Find a series of elements.
-const findElements = (selector) => new Promise((resolve, reject) => {
-  onReady().then(() => {
-    const el = document.querySelectorAll(selector);
-    return (!el || el.length === 0) ? reject(errors.noneFound) : resolve(el);
-  }).catch((e) => { reject(e); });
-});
-
-// Prepare a query element.
-const prepareQueryElement = (queryElement = { id: '', selector: '', limit: 1 }) => {
-  const parsedId = queryElement.id || queryElement.selector || queryElement;
-  return {
-    id: parsedId.replace(/(\[.+\])|(#|\.)/g, ''),
-    selector: queryElement.selector || queryElement,
-    limit: queryElement.limit || undefined,
-  };
-};
-
-// Prepare a result element.
-const prepareResult = (id, elements) => ({
-  id,
-  element: elements,
-  elements,
-  count: elements.length || 1,
-});
-
-// Load single element.
-const loadElement = (query) => {
-  // Query element can be 'string' or:
-  // { id, selector, limit }
-  const queryElement = prepareQueryElement(query);
-  const { selector, limit } = queryElement;
-
-  return new Promise((resolve, reject) => {
-    // If limit === 0, search for true/false.
-    // If limit === 1, search for single element.
-    // If limit > 1, search for array.
-    if (limit === 0) {
-      return findElement(selector).then((element) => resolve(!!element)).catch((e) => reject(e));
-    } if (!limit || limit === 1) {
-      return findElement(selector).then((element) => resolve(prepareResult(queryElement.id, element))).catch((e) => reject(e));
-    } if (limit > 1) {
-      return findElements(selector).then((elements) => {
-        const arr = elements;
-        if (arr && arr.length && arr.length > limit) {
-          arr.length = limit;
-        }
-        return resolve(arr.map((el) => prepareResult(queryElement.id, el)));
-      }).catch((e) => reject(e));
-    }
-    return reject(errors.badParams);
-  });
-};
-
-// Prepare search array.
-const prepareQueryArray = (queryObject) => {
-  if (Array.isArray(queryObject)) {
-    return queryObject;
-  }
-  return Object.keys(queryObject).map((key) => ({
-    id: queryObject.id || key,
-    selector: queryObject[key],
-  }));
-};
-
-// Load series of elements.
-const loadElements = (queries) => {
-  const queryArray = prepareQueryArray(queries);
-  return Promise.all(queryArray.map((query) => loadElement(query)));
-};
-
 // Render on load. Returns promise.
 const renderOnLoad = (timeLimit = 1000) => promises.createTimedPromise(timeLimit, (resolve, reject) => window.addEventListener('load', (evt) => {
   if (!window || !isReady(document)) {
@@ -151,6 +72,7 @@ const renderOnLoad = (timeLimit = 1000) => promises.createTimedPromise(timeLimit
   }
   return resolve({ window, evt });
 }));
+
 
 // ////////////////////////
 // EXPORT
@@ -162,8 +84,6 @@ export default {
   isInteractive,
   clearNotification,
   setNotification,
-  loadElement,
-  loadElements,
   renderOnLoad,
 };
 

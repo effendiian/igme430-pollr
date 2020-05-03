@@ -4,35 +4,35 @@
 
 import util from '../util';
 
+const { ElementStore, SelectorTable } = util.elements;
+
 // ////////////////////////
 // COMPONENTS
 // ////////////////////////
 
 // Selectors for the elements.
-const elements = {
-  root: '#pricing',
-  test: {
-    id: 'paragraphs',
-    selector: 'p',
-    limit: 5,
-  }
-};
-
-// React components.
-const components = {};
+const store = new ElementStore(
+  new SelectorTable({
+    root: '#content',
+    table: '#pricing',
+    links: {
+      selector: 'a',
+      limit: 5,
+    },
+  })
+);
 
 // ////////////////////////
 // RENDER
 // ////////////////////////
 
 // Run this function to render the window on load.
-util.helpers.renderOnLoad(1000).then(({ window, evt }) => {
+util.helpers.renderOnLoad(1000).then(() => {
   console.log('Loading elements.');
-  return util.helpers.loadElements(elements);
+  return store.load();
 }).then((el) => {
-  console.dir(el);
-
-  console.dir(components);
+  console.log('Elements loaded.');
+  console.dir(store.elements.root);
 }).catch((e) => {
   console.error(e);
 });

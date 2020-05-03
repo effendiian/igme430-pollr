@@ -11,7 +11,7 @@ const createError = (message) => new Error(message);
 // Send an error to the console.
 const sendError = (error) => {
   if (typeof error === 'string') {
-    console.error(error);
+    console.error(createError(error));
   } else if (error instanceof Error || error.message) {
     // Error object.
     console.dir(error);
