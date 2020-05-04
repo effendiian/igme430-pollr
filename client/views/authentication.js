@@ -15,7 +15,131 @@ import UserPrompt from '../components/forms/fragments/UserPrompt';
 const { ElementStore, SelectorTable } = util.elements;
 
 // ////////////////////////
-// MEMBERS
+// HANDLERS
+// ////////////////////////
+
+// Get data from the form.
+const serializeLoginForm = ({ username, password, csrf }) => util.helpers.serializeData([
+  { name: '_csrf', value: csrf },
+  { name: 'username', value: username },
+  { name: 'password', value: password },
+]);
+
+const handleLogin = function submitLoginForm(e) {
+  e.preventDefault();
+
+  // Hide notification, if present.
+  // util.view.hideNotifications(document.querySelector('#notification'));
+
+  // Get user input from the form.
+  const input = {
+    csrf: document.querySelector('input[name=_csrf]').value,
+    username: document.querySelector('#username').value,
+    password: document.querySelector('#password').value,
+  };
+
+  console.dir(input);
+
+  if (input.username === '' || input.password === '') {
+    console.log('Test: 1');
+    util.view.handleError(
+      "Whoops! You're missing some fields!",
+      document.querySelector('#notification'),
+      4000
+    );
+    return false;
+  }
+
+  const form = document.querySelector('#loginForm');
+  const request = {
+    action: form.getAttribute('action'),
+    body: serializeLoginForm(input),
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    }
+  };
+
+  console.dir(request);
+
+  // Send ajax.
+  util.ajax.post(request.action, request.body, request.headers).catch((er) => {
+    util.view.handleError(
+      er.response.error,
+      document.querySelector('#notification'),
+      4000
+    );
+  });
+  return false;
+};
+
+// Get data from the form.
+const serializeSignupForm = ({
+  username, password, verifyPassword, csrf
+}) => util.helpers.serializeData([
+  { name: '_csrf', value: csrf },
+  { name: 'username', value: username },
+  { name: 'password', value: password },
+  { name: 'verifyPassword', value: verifyPassword },
+]);
+
+// Handle signing up.
+const handleSignup = function submitSignupForm(e) {
+  e.preventDefault();
+
+  // Hide notification, if present.
+  // util.view.hideNotifications(document.querySelector('#notification'));
+
+  // Get user input from the form.
+  const input = {
+    csrf: document.querySelector('input[name=_csrf]').value,
+    username: document.querySelector('#username').value,
+    password: document.querySelector('#password').value,
+    verifyPassword: document.querySelector('#verifyPassword').value,
+  };
+
+  console.dir(input);
+
+  if (input.username === '' || input.password === '' || input.verifyPassword === '') {
+    util.view.handleError(
+      "Whoops! You're missing some fields!",
+      document.querySelector('#notification'),
+      4000
+    );
+    return false;
+  }
+
+  if (input.password !== input.verifyPassword) {
+    util.view.handleError(
+      "Whoops! Your passwords don't match!",
+      document.querySelector('#notification'),
+      4000
+    );
+    return false;
+  }
+
+  const form = document.querySelector('#signupForm');
+  const request = {
+    action: form.getAttribute('action'),
+    body: serializeSignupForm(input),
+  };
+
+  console.dir(request);
+
+  // Send ajax.
+  util.ajax.post(request.action, request.body, {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  }).catch((er) => {
+    util.view.handleError(
+      er.response.error,
+      document.querySelector('#notification'),
+      4000
+    );
+  });
+  return false;
+};
+
+// ////////////////////////
+// UI
 // ////////////////////////
 
 // Selectors for the elements.
@@ -59,10 +183,7 @@ const renderLoginForm = (csrf) => {
   renderTitle('Sign In');
   renderPrompt(<UserPrompt isLogin />);
   renderForm(
-    <LoginForm csrf={csrf} onSubmit={(e) => {
-      e.preventDefault();
-      console.log('Logging in!');
-    }} />
+    <LoginForm csrf={csrf} onSubmit={handleLogin} />
   );
 };
 
@@ -71,10 +192,7 @@ const renderSignupForm = (csrf) => {
   renderTitle('Sign Up');
   renderPrompt(<UserPrompt />);
   renderForm(
-    <SignupForm csrf={csrf} onSubmit={(e) => {
-      e.preventDefault();
-      console.log('Signing up!');
-    }}/>
+    <SignupForm csrf={csrf} onSubmit={handleSignup}/>
   );
 };
 
@@ -113,11 +231,6 @@ const setup = (csrfToken) => {
   }
 };
 
-// On render, this will run.
-const renderPage = () => {
-
-};
-
 // ////////////////////////
 // RENDER
 // ////////////////////////
@@ -128,7 +241,6 @@ util.helpers.onLoad(1000)
   .then(() => clearPage())
   .then(() => getCSRFToken())
   .then((token) => setup(token))
-  .then(() => renderPage())
   .catch((e) => {
     console.error(e);
   });

@@ -19,7 +19,7 @@ const app = express(); // Create the server.
 
 // If in development, add 'env.debug = true' to the app.
 if (process.env.NODE_ENV !== 'production') {
-  console.log(`Not running in Development mode. (NODE_ENV=${process.env.NODE_ENV}).`);
+  console.log(`Not running in Production mode. (NODE_ENV=${process.env.NODE_ENV}).`);
   app.debug = true;
 }
 

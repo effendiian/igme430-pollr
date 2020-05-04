@@ -83,6 +83,8 @@ const login = (req, res) => {
         rawPassword: `${req.body.password}`
     };
 
+    console.dir(User);
+
     // Attempt to authenticate.
     return User.authenticate(input.username, input.rawPassword, (err, user) => {
         

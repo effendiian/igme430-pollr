@@ -72,27 +72,51 @@ const renderOnPage = (content, target) => {
 // Render a component to the DOM.
 const renderComponent = (component, target) => renderOnPage(component, target);
 
+const alertComponent = <Alert visible />;
+
+const showElement = (props, target) => renderComponent(React.cloneElement(alertComponent, props), target);
+
+const hideElement = (props, target) => renderComponent(React.cloneElement(alertComponent, props), target);
+
 // Render a notification message for a set period of time.
 const renderNotification = ({ message, alert }, target, timeout) => {
+  console.log(`Test: 3 ${message}`);
   let timer;
-  const component = <Alert message={message} alert={alert} visible />;
-
-  const showElement = () => renderComponent(React.cloneElement(component, { visible: true }), target);
-
-  const hideElement = () => renderComponent(React.cloneElement(component, { visible: false }), target);
-
   // Create a promise.
   promises.createPromise((resolve, reject) => {
-    showElement();
+    showElement({
+      message,
+      alert,
+      visible: true,
+    }, target);
     timer = window.setTimeout(() => {
       window.clearTimeout(timer);
       return resolve(true);
     }, timeout);
   }).then(() => {
-    hideElement();
+    hideElement({
+      message,
+      alert,
+      visible: false,
+    }, target);
   });
 };
 
+// Hide notification if one is being shown.
+const hideNotifications = (target) => {
+  hideElement({
+    visible: false,
+  }, target);
+};
+
+// Handle errors.
+const handleError = function submitError(message, target, timeout = 3500) {
+  console.log(`Test: 2 ${message}`);
+  renderNotification({
+    message,
+    alert: 'alert-danger',
+  }, target, 3500);
+};
 
 // ////////////////////////
 // EXPORT
@@ -107,4 +131,6 @@ export default {
   verifyContent,
   contentExists,
   targetExists,
+  hideNotifications,
+  handleError,
 };

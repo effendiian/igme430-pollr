@@ -24,6 +24,7 @@ const requiresLogout = (req, res, next) => {
 
 // Requires CSRF Token.
 const requiresCSRFToken = (err, req, res, next) => {
+
   // Check if CSRF token has been included.
   if(err.code !== 'EBADCSRFTOKEN') {
     return next(err);
@@ -31,7 +32,7 @@ const requiresCSRFToken = (err, req, res, next) => {
 
   // Missing the token.
   console.error('Missing CSRF token.');
-  return false;
+  res.status(403).json({ "error": "session has expired or been tampered with." });
 };
 
 // ////////////////////////

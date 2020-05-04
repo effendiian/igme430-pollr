@@ -4,7 +4,8 @@
 
 // Redis.
 const redis = require('redis');
-const redisConnect = require('connect-redis');
+const session = require('express-session');
+const RedisStore = require('connect-redis')(session);
 
 // ////////////////////////
 // REDISDB OPTIONS
@@ -14,12 +15,13 @@ const configure = (app, {
     host,
     port,
     password,
-    session,
 }) => {
 
     // Create the redis client.
     const redisClient = redis.createClient({ host, port, password });
-    const redisStore = new (redisConnect(session))({ client: redisClient });
+    const redisStore = new RedisStore({ client: redisClient });
+
+    console.dir(session);
 
     // Setup the store.
     app.use(session({

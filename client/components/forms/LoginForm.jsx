@@ -25,7 +25,7 @@ const LoginForm = (props) => {
         <label htmlFor="password">Password</label>
         <input id="password" type="password" className="form-control" placeholder="Enter your password" />
       </div>
-      <input type="hidden" id="csrf" name="_csrf" value={csrf} hidden />
+      <input type="hidden" id="csrf" name="_csrf" value={csrf} />
       <button type="submit" className="btn btn-primary">Login</button>
     </form>);
 };

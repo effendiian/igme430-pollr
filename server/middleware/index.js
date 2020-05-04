@@ -10,7 +10,7 @@ const favicon = require('serve-favicon');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const session = require('express-session');
+// const session = require('express-session');
 const database = require('./../database');
 
 // ////////////////////////
@@ -25,6 +25,10 @@ const secure = require('./secure.js');
 // ////////////////////////
 const configure = (app, config) => {
 
+  // DATABASE & SESSION MANAGEMENT
+  // config.redisdb.session = session;
+  database.configure(app, config);
+
   // Serve static assets from the '/assets'
   app.use('/assets', express.static(config.middleware.path.assets));
 
@@ -37,23 +41,18 @@ const configure = (app, config) => {
   // PARSERS & CONTENT TREATMENT
   app.use(compression());
   app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.json());
   app.use(cookieParser());
   
-  // DATABASE & SESSION MANAGEMENT
-  config.redisdb.session = session;
-  database.configure(app, config);
-
   // VIEW ENGINE
   const hbsInstance = handlebars.create(config.handlebars);
   app.engine('handlebars', hbsInstance.engine);
   app.set('view engine', 'handlebars');
   app.set('views', config.middleware.path.views);
-
+  
   // CSRF TOKEN
   app.use(csrf());
-  if(!app.debug){
-    app.use(auth.requiresCSRFToken);
-  }
+  app.use(auth.requiresCSRFToken);
 
 };
 

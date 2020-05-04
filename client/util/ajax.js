@@ -48,10 +48,12 @@ const prepareXHR = ({
   action = '/',
   headers = {},
   isAsync = true,
+  type = 'json',
 }) => promises.createPromise((resolve, reject) => { // Creates a promise.
   const xhr = new XMLHttpRequest(); // Get the XHR object.
   xhr.open(method, action, isAsync); // Create the connection details.
   setRequestHeaders(xhr, headers);
+  xhr.responseType = type;
   return resolve(xhr);
 });
 
@@ -83,8 +85,9 @@ const send = ({
   action = '/',
   headers = {},
   isAsync = true,
+  type = 'json'
 }) => prepareXHR({
-  method, action, headers, isAsync
+  method, action, headers, isAsync, type
 })
   .then((request) => sendXHR(request, null));
 
@@ -100,22 +103,29 @@ const get = (action, headers) => send({
 });
 
 // Make a AJAX POST request.
-const post = (action, body, headers) => send({
-  body,
-  method: 'POST',
-  action,
-  headers,
-  isAsync: true,
-}).then((response) => {
-  console.log('POST: Is this being called?');
-  return response;
-}).catch((e) => {
-  throw e;
-});
+const post = (action, body, headers) => {
+  console.dir(body);
+  return send({
+    body, method: 'POST', action, headers, isAsync: true
+  })
+    .then((response) => {
+      console.log('POST: Is this being called?');
+      return response;
+    }).catch((e) => {
+      throw e;
+    });
+};
+
+// Redirect based on a response.
+const redirect = (response) => {
+  window.location = response.redirect;
+};
 
 // Get the CSRF Token from the server.
 const getToken = () => get('/getToken')
-  .then((response) => JSON.parse(response.responseText).csrfToken);
+  .then((response) => response.response)
+  .then((json) => json.csrfToken);
+// .then((response) => JSON.parse(response.responseText).csrfToken);
 
 // ////////////////////////
 // EXPORT
@@ -130,4 +140,5 @@ export default {
   get,
   post,
   getToken,
+  redirect,
 };

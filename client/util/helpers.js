@@ -54,17 +54,6 @@ const onReady = (readyable) => {
   return promises.createPromise((resolve, reject) => ((isReady(target)) ? resolve(target) : reject(errors.documentNotReady)));
 };
 
-// Clear notifications.
-const clearNotification = () => {
-  // Remove notification message.
-  document.getElementById('notifications').innerText = '';
-};
-
-// Set a message.
-const setNotification = (message) => {
-  document.getElementById('notifications').innerText = message;
-};
-
 // Render on load. Returns promise.
 const onLoad = (timeLimit = 1000) => promises.createTimedPromise(timeLimit, (resolve, reject) => window.addEventListener('load', (evt) => {
   if (!window || !isReady(document)) {
@@ -73,6 +62,18 @@ const onLoad = (timeLimit = 1000) => promises.createTimedPromise(timeLimit, (res
   return resolve({ window, evt });
 }));
 
+// Pass in JS array.
+// Each item:
+// { field: name, value: value }
+// Pass in a data object, get a serialized component out.
+const serializeField = ({ name, value }) => `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;
+
+// Get joined serialized string.
+// Serialize the data.
+const serializeData = (data = []) => {
+  const encoded = data.map((field) => serializeField(field));
+  return encoded.join('&');
+};
 
 // ////////////////////////
 // EXPORT
@@ -83,8 +84,8 @@ export default {
   onReady,
   isReady,
   isInteractive,
-  clearNotification,
-  setNotification,
+  serializeField,
+  serializeData,
 };
 
 

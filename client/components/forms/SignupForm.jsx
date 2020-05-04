@@ -29,7 +29,7 @@ const SignupForm = (props) => {
         <label htmlFor="verifyPassword">Verify Password</label>
         <input id="verifyPassword" type="password" className="form-control" placeholder="Verify your password" />
       </div>
-      <input type="hidden" id="csrf" name="_csrf" value={csrf} hidden />
+      <input type="hidden" id="csrf" name="_csrf" value={csrf} />
       <button type="submit" className="btn btn-primary">Sign Up</button>
     </form>);
 };

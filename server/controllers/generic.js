@@ -2,15 +2,11 @@
 // MEMBERS
 // ////////////////////////
 
-// Generate CSRF Token.
-const generateToken = (req) => {
-    return req.csrfToken();
-};
-
 // Returns function for a specific page.
 const getPageAction = (page) => {
     return (req, res) => {
         res.render(page, {
+            csrfToken: req.csrfToken(),
             navbarLinks: [ 
               { title: 'Pricing', href: '/pricing' },
               { title: 'Login', href: '/login' },
@@ -28,7 +24,7 @@ const getPageAction = (page) => {
 const getPageForm = (page) => {
     return (req, res) => {
         res.render(page, {
-            csrfToken: generateToken(req),
+            csrfToken: req.csrfToken(),
             navbarLinks: [ 
               { title: 'Pricing', href: '/pricing' },
               { title: 'Login', href: '/login' },
@@ -44,9 +40,12 @@ const getPageForm = (page) => {
 
 // Generate a page CSRF token.
 const getPageToken = (req, res) => {
-    res.json({
-        csrfToken: generateToken(req)
-    });
+    const csrfJSON = {
+        csrfToken: req.csrfToken()
+    };
+    
+    console.dir(csrfJSON);
+    res.json(csrfJSON);
 };
 
 // Redirect page.
