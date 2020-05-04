@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === 'production') {
 
   // Export production configuration settings.
   module.exports = {
-    url: redisURL.hostname,
+    host: redisURL.hostname,
     port: redisURL.port,
     password: redisPass,
   };
